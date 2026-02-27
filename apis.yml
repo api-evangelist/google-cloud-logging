@@ -1,0 +1,66 @@
+name: Google Cloud Logging
+description: Google Cloud Logging is a fully-managed service that performs at scale and can ingest application and system log data from thousands of VMs. Allows you to search, monitor, and analyze log data and events from Google Cloud and AWS.
+image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+created: 2024-01-01 00:00:00+00:00
+modified: 2024-01-01 00:00:00+00:00
+specificationVersion: '0.18'
+url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging.yml
+tags:
+- Logging
+- Monitoring
+- Observability
+- Cloud
+apis:
+- name: Google Cloud Logging API
+  description: Writes log entries and manages your Cloud Logging configuration. The API is organized into the following resources - Entries (write and list log entries), Logs (list and delete logs), Logs-based metrics (create, update, and delete logs-based metrics), Resource descriptors (list monitored resource descriptors), Sinks (create, update, list, and delete sinks), Exclusions (create, update, list, and delete exclusions), CMEK settings (get and update CMEK settings).
+  image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+  humanURL: https://cloud.google.com/logging
+  baseURL: https://logging.googleapis.com
+  tags:
+  - Logging
+  - Monitoring
+  - Logs
+  - Events
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/logging/docs
+  - type: OpenAPI
+    url: https://api.apis.guru/v2/specs/googleapis.com/logging/v2/openapi.yaml
+  - type: Pricing
+    url: https://cloud.google.com/stackdriver/pricing
+  - type: Quotas
+    url: https://cloud.google.com/logging/quotas
+  - type: SDK
+    url: https://cloud.google.com/logging/docs/reference/libraries
+  - type: Console
+    url: https://console.cloud.google.com/logs
+  - type: Status
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: ReleaseNotes
+    url: https://cloud.google.com/logging/docs/release-notes
+common:
+- type: Portal
+  url: https://console.cloud.google.com
+- type: GettingStarted
+  url: https://cloud.google.com/logging/docs/quickstarts
+- type: Authentication
+  url: https://cloud.google.com/docs/authentication
+- type: Support
+  url: https://cloud.google.com/support
+- type: Blog
+  url: https://cloud.google.com/blog/products/operations
+- type: ChangeLog
+  url: https://cloud.google.com/logging/docs/release-notes
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+maintainers:
+- FN: APIs.json
+  email: info@apijson.org
+  url: https://apisjson.org
+overlays:
+- type: APIs.io Search
+  url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-search.yml
+- type: API Evangelist Ratings
+  url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-ratings.yml
