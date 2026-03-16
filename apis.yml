@@ -1,9 +1,11 @@
+aid: google-cloud-logging
 name: Google Cloud Logging
 description: Google Cloud Logging is a fully-managed service that performs at scale and can ingest application and system log data from thousands of VMs. Allows you to search, monitor, and analyze log data and events from Google Cloud and AWS.
 image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
-created: 2024-01-01 00:00:00+00:00
-modified: 2026-03-04
-specificationVersion: '0.18'
+type: Index
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging.yml
 tags:
 - Logging
