@@ -10,7 +10,7 @@ Google Cloud Logging is a fully-managed service that performs at scale and can i
 ## Timestamps
 
 - **Created:** 2024-01-01 00:00:00+00:00 
-- **Modified:** 2024-01-01 00:00:00+00:00 
+- **Modified:** 2026-04-28
 
 ## APIs
 

@@ -4,7 +4,7 @@ description: Google Cloud Logging is a fully-managed service that performs at sc
 image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
 type: Index
 created: '2024-01-01'
-modified: '2026-03-16'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging.yml
 tags:
