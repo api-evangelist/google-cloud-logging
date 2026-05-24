@@ -1,0 +1,440 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging API
+  description: |
+    Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+    configuration including buckets, sinks, exclusions, log-based metrics,
+    monitored resource descriptors, and CMEK settings.
+  version: v2
+servers:
+  - url: https://logging.googleapis.com
+security:
+  - OAuth2: [logging.write]
+  - OAuth2: [logging.read]
+  - OAuth2: [logging.admin]
+  - OAuth2: [cloud-platform]
+paths:
+  /v2/entries:write:
+    post:
+      summary: Write log entries
+      operationId: writeLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                logName:
+                  type: string
+                resource:
+                  type: object
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+                entries:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LogEntry'
+                partialSuccess:
+                  type: boolean
+                dryRun:
+                  type: boolean
+      responses:
+        '200':
+          description: Empty success response
+  /v2/entries:list:
+    post:
+      summary: List log entries
+      operationId: listLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceNames:
+                  type: array
+                  items:
+                    type: string
+                filter:
+                  type: string
+                orderBy:
+                  type: string
+                pageSize:
+                  type: integer
+                pageToken:
+                  type: string
+      responses:
+        '200':
+          description: List of log entries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogEntry'
+                  nextPageToken:
+                    type: string
+  /v2/entries:tail:
+    post:
+      summary: Tail log entries
+      operationId: tailLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceNames:
+                  type: array
+                  items:
+                    type: string
+                filter:
+                  type: string
+                bufferWindow:
+                  type: string
+      responses:
+        '200':
+          description: Streaming tail response
+          content:
+            application/json:
+              schema:
+                type: object
+  /v2/entries:copy:
+    post:
+      summary: Copy log entries
+      operationId: copyLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Long-running operation
+          content:
+            application/json:
+              schema:
+                type: object
+  /v2/{parent}/buckets:
+    get:
+      summary: List buckets
+      operationId: listBuckets
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+          example: projects/my-project/locations/global
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of buckets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  buckets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogBucket'
+                  nextPageToken:
+                    type: string
+    post:
+      summary: Create bucket
+      operationId: createBucket
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: bucketId
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogBucket'
+      responses:
+        '200':
+          description: Created bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+  /v2/{name}/bucket:
+    get:
+      summary: Get bucket
+      operationId: getBucket
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+    patch:
+      summary: Update bucket
+      operationId: updateBucket
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updateMask
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogBucket'
+      responses:
+        '200':
+          description: Updated bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+    delete:
+      summary: Delete bucket
+      operationId: deleteBucket
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+  /v2/{parent}/sinks:
+    get:
+      summary: List sinks
+      operationId: listSinks
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of sinks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sinks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogSink'
+    post:
+      summary: Create sink
+      operationId: createSink
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: uniqueWriterIdentity
+          in: query
+          schema:
+            type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogSink'
+      responses:
+        '200':
+          description: Created sink
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogSink'
+  /v2/{sinkName}:
+    get:
+      summary: Get sink
+      operationId: getSink
+      parameters:
+        - name: sinkName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sink
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogSink'
+    delete:
+      summary: Delete sink
+      operationId: deleteSink
+      parameters:
+        - name: sinkName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+  /v2/{parent}/exclusions:
+    get:
+      summary: List exclusions
+      operationId: listExclusions
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of exclusions
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create exclusion
+      operationId: createExclusion
+      parameters:
+        - name: parent
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Created exclusion
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services
+  schemas:
+    LogEntry:
+      type: object
+      properties:
+        logName:
+          type: string
+        resource:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+        receiveTimestamp:
+          type: string
+          format: date-time
+        severity:
+          type: string
+          enum: [DEFAULT, DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY]
+        insertId:
+          type: string
+        httpRequest:
+          type: object
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        textPayload:
+          type: string
+        jsonPayload:
+          type: object
+        protoPayload:
+          type: object
+    LogBucket:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        retentionDays:
+          type: integer
+        locked:
+          type: boolean
+        lifecycleState:
+          type: string
+    LogSink:
+      type: object
+      properties:
+        name:
+          type: string
+        destination:
+          type: string
+        filter:
+          type: string
+        description:
+          type: string
+        disabled:
+          type: boolean
+        writerIdentity:
+          type: string
+        includeChildren:
+          type: boolean
+        createTime:
+          type: string
+          format: date-time
