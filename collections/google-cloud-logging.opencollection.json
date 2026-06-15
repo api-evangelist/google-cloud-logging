@@ -1,0 +1,321 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Logging API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Write log entries",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/entries:write",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Write log entries"
+    },
+    {
+      "info": {
+        "name": "List log entries",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/entries:list",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "List log entries"
+    },
+    {
+      "info": {
+        "name": "Tail log entries",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/entries:tail",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Tail log entries"
+    },
+    {
+      "info": {
+        "name": "Copy log entries",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/entries:copy",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Copy log entries"
+    },
+    {
+      "info": {
+        "name": "List buckets",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://logging.googleapis.com/v2/:parent/buckets",
+        "params": [
+          {
+            "name": "parent",
+            "value": "projects/my-project/locations/global",
+            "type": "path"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageToken",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List buckets"
+    },
+    {
+      "info": {
+        "name": "Create bucket",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/:parent/buckets",
+        "params": [
+          {
+            "name": "parent",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "bucketId",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create bucket"
+    },
+    {
+      "info": {
+        "name": "Get bucket",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://logging.googleapis.com/v2/:name/bucket",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get bucket"
+    },
+    {
+      "info": {
+        "name": "Update bucket",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "https://logging.googleapis.com/v2/:name/bucket",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "updateMask",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update bucket"
+    },
+    {
+      "info": {
+        "name": "Delete bucket",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://logging.googleapis.com/v2/:name/bucket",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete bucket"
+    },
+    {
+      "info": {
+        "name": "List sinks",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://logging.googleapis.com/v2/:parent/sinks",
+        "params": [
+          {
+            "name": "parent",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List sinks"
+    },
+    {
+      "info": {
+        "name": "Create sink",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/:parent/sinks",
+        "params": [
+          {
+            "name": "parent",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "uniqueWriterIdentity",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create sink"
+    },
+    {
+      "info": {
+        "name": "Get sink",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://logging.googleapis.com/v2/:sinkName",
+        "params": [
+          {
+            "name": "sinkName",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get sink"
+    },
+    {
+      "info": {
+        "name": "Delete sink",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://logging.googleapis.com/v2/:sinkName",
+        "params": [
+          {
+            "name": "sinkName",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete sink"
+    },
+    {
+      "info": {
+        "name": "List exclusions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://logging.googleapis.com/v2/:parent/exclusions",
+        "params": [
+          {
+            "name": "parent",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List exclusions"
+    },
+    {
+      "info": {
+        "name": "Create exclusion",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://logging.googleapis.com/v2/:parent/exclusions",
+        "params": [
+          {
+            "name": "parent",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create exclusion"
+    }
+  ],
+  "bundled": true
+}

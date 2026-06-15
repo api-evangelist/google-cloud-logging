@@ -1,0 +1,1585 @@
+{
+  "item": [
+    {
+      "id": "a78cab0a-2936-463b-9c77-b886253ba14b",
+      "name": "Write log entries",
+      "request": {
+        "name": "Write log entries",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            "entries:write"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    },\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "b3b7a83d-4b25-4d92-a48b-17cd2c783645",
+          "name": "Empty success response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                "entries:write"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1996-03-09T23:59:27.796Z\",\n      \"receiveTimestamp\": \"2025-09-27T15:47:15.933Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"2009-07-04T11:24:06.175Z\",\n      \"receiveTimestamp\": \"1986-01-02T13:57:59.379Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "bd85df81-0221-44a9-8b92-bde5ffddba71",
+      "name": "List log entries",
+      "request": {
+        "name": "List log entries",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            "entries:list"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"orderBy\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "e903322a-fb9b-4e59-8123-b771ad0c4986",
+          "name": "List of log entries",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                "entries:list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"orderBy\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"entries\": [\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"2016-01-04T16:52:05.443Z\",\n      \"receiveTimestamp\": \"1958-10-02T13:43:44.143Z\",\n      \"severity\": \"ALERT\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1988-01-26T17:39:04.818Z\",\n      \"receiveTimestamp\": \"1960-10-22T03:24:23.967Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "15df8dfb-b7c1-472f-a9d9-ca5a67b8c854",
+      "name": "Tail log entries",
+      "request": {
+        "name": "Tail log entries",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            "entries:tail"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"bufferWindow\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "90932173-cd70-4dee-a01c-51d39e00b692",
+          "name": "Streaming tail response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                "entries:tail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"bufferWindow\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c2278b21-36f7-4d18-a5dc-2307027b01ff",
+      "name": "Copy log entries",
+      "request": {
+        "name": "Copy log entries",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            "entries:copy"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "d9f6f6bc-51ef-40b1-a99b-f3e62853afca",
+          "name": "Long-running operation",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                "entries:copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3f3b21e9-045b-47c4-9a57-add2fcbd6b99",
+      "name": "List buckets",
+      "request": {
+        "name": "List buckets",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "buckets"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "pageToken",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "74d81e13-5378-46a8-bd44-cedb26a2ee7b",
+          "name": "List of buckets",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "buckets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"buckets\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createTime\": \"1989-10-03T23:23:46.508Z\",\n      \"updateTime\": \"1985-07-04T08:23:28.649Z\",\n      \"retentionDays\": 8259,\n      \"locked\": true,\n      \"lifecycleState\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createTime\": \"1999-10-12T09:56:29.046Z\",\n      \"updateTime\": \"2008-08-07T21:01:31.670Z\",\n      \"retentionDays\": 4429,\n      \"locked\": true,\n      \"lifecycleState\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8a85962a-c544-4cb6-a661-dcc22552615a",
+      "name": "Create bucket",
+      "request": {
+        "name": "Create bucket",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "buckets"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "bucketId",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "432d3774-de92-4c73-a76a-53068d285580",
+          "name": "Created bucket",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "buckets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "bucketId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"createTime\": \"2024-12-18T23:17:20.050Z\",\n  \"updateTime\": \"1964-08-31T18:13:58.606Z\",\n  \"retentionDays\": 2142,\n  \"locked\": false,\n  \"lifecycleState\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ab88397b-2928-445c-99de-490e64583928",
+      "name": "Get bucket",
+      "request": {
+        "name": "Get bucket",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":name",
+            "bucket"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "name",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "03a6c04d-4fb3-4c29-a5f3-8d56cf6351dd",
+          "name": "Bucket",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":name",
+                "bucket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"createTime\": \"2024-12-18T23:17:20.050Z\",\n  \"updateTime\": \"1964-08-31T18:13:58.606Z\",\n  \"retentionDays\": 2142,\n  \"locked\": false,\n  \"lifecycleState\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "caba85a4-29cc-4c0f-a8c3-05671f63d11e",
+      "name": "Update bucket",
+      "request": {
+        "name": "Update bucket",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":name",
+            "bucket"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "updateMask",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "name",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "72cbc47f-cc2b-455c-a1be-cdb6a4ce5de3",
+          "name": "Updated bucket",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":name",
+                "bucket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "updateMask",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"createTime\": \"2024-12-18T23:17:20.050Z\",\n  \"updateTime\": \"1964-08-31T18:13:58.606Z\",\n  \"retentionDays\": 2142,\n  \"locked\": false,\n  \"lifecycleState\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "47eb2b7d-6463-4d7b-abd5-e58f88982d32",
+      "name": "Delete bucket",
+      "request": {
+        "name": "Delete bucket",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":name",
+            "bucket"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "name",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1bf8e99c-ddd4-4536-aa9c-36e9e3989e50",
+          "name": "Deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":name",
+                "bucket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5571b63c-3dce-4989-9884-70891bb7c311",
+      "name": "List sinks",
+      "request": {
+        "name": "List sinks",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "sinks"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7552503b-f539-4784-b8d7-6d8f7dbf0d71",
+          "name": "List of sinks",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "sinks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"sinks\": [\n    {\n      \"name\": \"string\",\n      \"destination\": \"string\",\n      \"filter\": \"string\",\n      \"description\": \"string\",\n      \"disabled\": false,\n      \"writerIdentity\": \"string\",\n      \"includeChildren\": true,\n      \"createTime\": \"1968-10-29T17:33:35.869Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"destination\": \"string\",\n      \"filter\": \"string\",\n      \"description\": \"string\",\n      \"disabled\": true,\n      \"writerIdentity\": \"string\",\n      \"includeChildren\": true,\n      \"createTime\": \"1969-09-13T14:16:59.621Z\"\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b0bc1f6c-afdd-4aa2-9e88-445fbc8f454f",
+      "name": "Create sink",
+      "request": {
+        "name": "Create sink",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "sinks"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "uniqueWriterIdentity",
+              "value": "<boolean>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "8bec4f67-637b-4444-94a3-41e05d926a4d",
+          "name": "Created sink",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "sinks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "uniqueWriterIdentity",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"destination\": \"string\",\n  \"filter\": \"string\",\n  \"description\": \"string\",\n  \"disabled\": true,\n  \"writerIdentity\": \"string\",\n  \"includeChildren\": false,\n  \"createTime\": \"2008-05-03T07:48:21.475Z\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e559241c-29b7-40c6-a4a5-489f808ed4e3",
+      "name": "Get sink",
+      "request": {
+        "name": "Get sink",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":sinkName"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "sinkName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "15baa9b1-0398-4204-ac0c-38e9c713aeac",
+          "name": "Sink",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":sinkName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sinkName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"name\": \"string\",\n  \"destination\": \"string\",\n  \"filter\": \"string\",\n  \"description\": \"string\",\n  \"disabled\": true,\n  \"writerIdentity\": \"string\",\n  \"includeChildren\": false,\n  \"createTime\": \"2008-05-03T07:48:21.475Z\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "738a9792-5caf-4ba0-9ebd-202daf996cb4",
+      "name": "Delete sink",
+      "request": {
+        "name": "Delete sink",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":sinkName"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "sinkName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "35c16572-a9bf-41e0-92f3-b8f7cdeb09cb",
+          "name": "Deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":sinkName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sinkName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "62845cc0-d57f-42b0-bfcb-0b1934b33dd8",
+      "name": "List exclusions",
+      "request": {
+        "name": "List exclusions",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "exclusions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9908ccab-f701-4712-8e2f-ea6cfde790ea",
+          "name": "List of exclusions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "exclusions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5ecd9e41-02be-423b-915b-1cd73168e023",
+      "name": "Create exclusion",
+      "request": {
+        "name": "Create exclusion",
+        "description": {},
+        "url": {
+          "path": [
+            "v2",
+            ":parent",
+            "exclusions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "parent",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "29be5c38-fb42-46e8-81d0-760618f39fe8",
+          "name": "Created exclusion",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "v2",
+                ":parent",
+                "exclusions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "parent",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://logging.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "logging.write logging.read logging.admin cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "49a732f5-f10b-49e3-8836-e5828cf03b0a",
+    "name": "Google Cloud Logging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
+      "type": "text/plain"
+    }
+  }
+}
