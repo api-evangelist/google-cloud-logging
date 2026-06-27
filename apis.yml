@@ -30,9 +30,9 @@ apis:
         url: https://api.apis.guru/v2/specs/googleapis.com/logging/v2/openapi.yaml
       - type: Pricing
         url: https://cloud.google.com/stackdriver/pricing
-      - type: Quotas
+      - type: RateLimits
         url: https://cloud.google.com/logging/quotas
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/logging/docs/reference/libraries
       - type: Console
         url: https://console.cloud.google.com/logs
@@ -95,7 +95,7 @@ common:
     url: https://cloud.google.com
   - type: Login
     url: https://console.cloud.google.com/
-  - type: SignUp
+  - type: Signup
     url: https://console.cloud.google.com/freetrial
   - type: SDKs
     url: https://cloud.google.com/logging/docs/reference/libraries
