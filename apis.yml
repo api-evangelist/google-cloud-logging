@@ -67,6 +67,12 @@ apis:
       - type: Node.js SDK
         url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-logging-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-logging-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-logging-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-logging-scopes.yml
   - type: Portal
