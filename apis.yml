@@ -67,6 +67,8 @@ apis:
       - type: Node.js SDK
         url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-logging-scopes.yml
   - type: Portal
     url: https://console.cloud.google.com
   - type: GettingStarted

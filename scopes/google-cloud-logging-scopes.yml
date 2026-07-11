@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-cloud-logging-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/google-cloud-logging-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+scopes:
+- scope: cloud-platform
+  description: View and manage your data across Google Cloud Platform services
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-cloud-logging-openapi.yml
+- scope: logging.admin
+  description: Administrate logs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-cloud-logging-openapi.yml
+- scope: logging.read
+  description: View logs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-cloud-logging-openapi.yml
+- scope: logging.write
+  description: Submit log data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-cloud-logging-openapi.yml
