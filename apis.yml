@@ -67,6 +67,8 @@ apis:
       - type: Node.js SDK
         url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-cloud-logging-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-cloud-logging-vulnerability-disclosure.yml
   - type: DomainSecurity

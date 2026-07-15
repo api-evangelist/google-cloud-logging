@@ -1,0 +1,301 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/google-cloud-logging-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 15
+  by_action_class:
+    acting: 10
+    connected: 5
+  by_consequence:
+    write: 10
+    read: 5
+  human_in_the_loop_required: 0
+operations:
+- path: /v2/entries:write
+  method: post
+  operationId: writeLogEntries
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/entries:list
+  method: post
+  operationId: listLogEntries
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/entries:tail
+  method: post
+  operationId: tailLogEntries
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/entries:copy
+  method: post
+  operationId: copyLogEntries
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/buckets
+  method: get
+  operationId: listBuckets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/buckets
+  method: post
+  operationId: createBucket
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{name}/bucket
+  method: get
+  operationId: getBucket
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{name}/bucket
+  method: patch
+  operationId: updateBucket
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{name}/bucket
+  method: delete
+  operationId: deleteBucket
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/sinks
+  method: get
+  operationId: listSinks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/sinks
+  method: post
+  operationId: createSink
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{sinkName}
+  method: get
+  operationId: getSink
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{sinkName}
+  method: delete
+  operationId: deleteSink
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/exclusions
+  method: get
+  operationId: listExclusions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
+- path: /v2/{parent}/exclusions
+  method: post
+  operationId: createExclusion
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - cloud-platform
+    - logging.admin
+    - logging.read
+    - logging.write
