@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging Bucket API
+  description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+
+    configuration including buckets, sinks, exclusions, log-based metrics,
+
+    monitored resource descriptors, and CMEK settings.
+
+    '
+  version: v2
+servers:
+- url: https://logging.googleapis.com
+security:
+- OAuth2:
+  - logging.write
+- OAuth2:
+  - logging.read
+- OAuth2:
+  - logging.admin
+- OAuth2:
+  - cloud-platform
+tags:
+- name: Bucket
+paths:
+  /v2/{name}/bucket:
+    get:
+      summary: Get bucket
+      operationId: getBucket
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+      tags:
+      - Bucket
+    patch:
+      summary: Update bucket
+      operationId: updateBucket
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogBucket'
+      responses:
+        '200':
+          description: Updated bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+      tags:
+      - Bucket
+    delete:
+      summary: Delete bucket
+      operationId: deleteBucket
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+      tags:
+      - Bucket
+components:
+  schemas:
+    LogBucket:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        retentionDays:
+          type: integer
+        locked:
+          type: boolean
+        lifecycleState:
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services

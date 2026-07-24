@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging Bucket Entries:list API
+  description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+
+    configuration including buckets, sinks, exclusions, log-based metrics,
+
+    monitored resource descriptors, and CMEK settings.
+
+    '
+  version: v2
+servers:
+- url: https://logging.googleapis.com
+security:
+- OAuth2:
+  - logging.write
+- OAuth2:
+  - logging.read
+- OAuth2:
+  - logging.admin
+- OAuth2:
+  - cloud-platform
+tags:
+- name: Entries:list
+paths:
+  /v2/entries:list:
+    post:
+      summary: List log entries
+      operationId: listLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resourceNames:
+                  type: array
+                  items:
+                    type: string
+                filter:
+                  type: string
+                orderBy:
+                  type: string
+                pageSize:
+                  type: integer
+                pageToken:
+                  type: string
+      responses:
+        '200':
+          description: List of log entries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogEntry'
+                  nextPageToken:
+                    type: string
+      tags:
+      - Entries:list
+components:
+  schemas:
+    LogEntry:
+      type: object
+      properties:
+        logName:
+          type: string
+        resource:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+        receiveTimestamp:
+          type: string
+          format: date-time
+        severity:
+          type: string
+          enum:
+          - DEFAULT
+          - DEBUG
+          - INFO
+          - NOTICE
+          - WARNING
+          - ERROR
+          - CRITICAL
+          - ALERT
+          - EMERGENCY
+        insertId:
+          type: string
+        httpRequest:
+          type: object
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        textPayload:
+          type: string
+        jsonPayload:
+          type: object
+        protoPayload:
+          type: object
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services

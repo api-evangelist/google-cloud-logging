@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging Bucket Entries:copy API
+  description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+
+    configuration including buckets, sinks, exclusions, log-based metrics,
+
+    monitored resource descriptors, and CMEK settings.
+
+    '
+  version: v2
+servers:
+- url: https://logging.googleapis.com
+security:
+- OAuth2:
+  - logging.write
+- OAuth2:
+  - logging.read
+- OAuth2:
+  - logging.admin
+- OAuth2:
+  - cloud-platform
+tags:
+- name: Entries:copy
+paths:
+  /v2/entries:copy:
+    post:
+      summary: Copy log entries
+      operationId: copyLogEntries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Long-running operation
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Entries:copy
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services

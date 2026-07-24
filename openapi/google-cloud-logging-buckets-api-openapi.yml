@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging Bucket Buckets API
+  description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+
+    configuration including buckets, sinks, exclusions, log-based metrics,
+
+    monitored resource descriptors, and CMEK settings.
+
+    '
+  version: v2
+servers:
+- url: https://logging.googleapis.com
+security:
+- OAuth2:
+  - logging.write
+- OAuth2:
+  - logging.read
+- OAuth2:
+  - logging.admin
+- OAuth2:
+  - cloud-platform
+tags:
+- name: Buckets
+paths:
+  /v2/{parent}/buckets:
+    get:
+      summary: List buckets
+      operationId: listBuckets
+      parameters:
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+        example: projects/my-project/locations/global
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of buckets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  buckets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogBucket'
+                  nextPageToken:
+                    type: string
+      tags:
+      - Buckets
+    post:
+      summary: Create bucket
+      operationId: createBucket
+      parameters:
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: bucketId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogBucket'
+      responses:
+        '200':
+          description: Created bucket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBucket'
+      tags:
+      - Buckets
+components:
+  schemas:
+    LogBucket:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        retentionDays:
+          type: integer
+        locked:
+          type: boolean
+        lifecycleState:
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services

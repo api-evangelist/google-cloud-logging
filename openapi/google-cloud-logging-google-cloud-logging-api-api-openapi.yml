@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Logging Bucket Google Cloud Logging API API
+  description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging
+
+    configuration including buckets, sinks, exclusions, log-based metrics,
+
+    monitored resource descriptors, and CMEK settings.
+
+    '
+  version: v2
+servers:
+- url: https://logging.googleapis.com
+security:
+- OAuth2:
+  - logging.write
+- OAuth2:
+  - logging.read
+- OAuth2:
+  - logging.admin
+- OAuth2:
+  - cloud-platform
+tags:
+- name: Google Cloud Logging API
+paths:
+  /v2/{sinkName}:
+    get:
+      summary: Get sink
+      operationId: getSink
+      parameters:
+      - name: sinkName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Sink
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogSink'
+      tags:
+      - Google Cloud Logging API
+    delete:
+      summary: Delete sink
+      operationId: deleteSink
+      parameters:
+      - name: sinkName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+      tags:
+      - Google Cloud Logging API
+components:
+  schemas:
+    LogSink:
+      type: object
+      properties:
+        name:
+          type: string
+        destination:
+          type: string
+        filter:
+          type: string
+        description:
+          type: string
+        disabled:
+          type: boolean
+        writerIdentity:
+          type: string
+        includeChildren:
+          type: boolean
+        createTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            logging.write: Submit log data
+            logging.read: View logs
+            logging.admin: Administrate logs
+            cloud-platform: View and manage your data across Google Cloud Platform services
