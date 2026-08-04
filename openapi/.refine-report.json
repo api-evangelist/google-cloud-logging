@@ -1,0 +1,30 @@
+{
+  "provider": "google-cloud-logging",
+  "sources": [
+    "google-cloud-logging-bucket-api-openapi.yml",
+    "google-cloud-logging-buckets-api-openapi.yml",
+    "google-cloud-logging-entries-copy-api-openapi.yml",
+    "google-cloud-logging-entries-list-api-openapi.yml",
+    "google-cloud-logging-entries-tail-api-openapi.yml",
+    "google-cloud-logging-entries-write-api-openapi.yml",
+    "google-cloud-logging-exclusions-api-openapi.yml",
+    "google-cloud-logging-google-cloud-logging-api-api-openapi.yml",
+    "google-cloud-logging-sinks-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-logging-bucket-api-openapi.yml",
+    "google-cloud-logging-buckets-api-openapi.yml",
+    "google-cloud-logging-entries-copy-api-openapi.yml",
+    "google-cloud-logging-entries-list-api-openapi.yml",
+    "google-cloud-logging-entries-tail-api-openapi.yml",
+    "google-cloud-logging-entries-write-api-openapi.yml",
+    "google-cloud-logging-exclusions-api-openapi.yml",
+    "google-cloud-logging-google-cloud-logging-api-api-openapi.yml",
+    "google-cloud-logging-sinks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
