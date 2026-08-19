@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Logging Bucket Exclusions API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exclusions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List exclusions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://logging.googleapis.com/v2/:parent/exclusions",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List exclusions"
+        },
+        {
+          "info": {
+            "name": "Create exclusion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://logging.googleapis.com/v2/:parent/exclusions",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create exclusion"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

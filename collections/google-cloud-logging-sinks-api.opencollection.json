@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Logging Bucket Sinks API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sinks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sinks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://logging.googleapis.com/v2/:parent/sinks",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List sinks"
+        },
+        {
+          "info": {
+            "name": "Create sink",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://logging.googleapis.com/v2/:parent/sinks",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uniqueWriterIdentity",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create sink"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,151 @@
+{
+  "item": [
+    {
+      "id": "d3a41160-a4e8-4507-b15f-673e8b3cc6be",
+      "name": "Entries:list",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb46641b-2a53-4e39-aa4e-0114cab57f38",
+          "name": "List log entries",
+          "request": {
+            "name": "List log entries",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "entries:list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"orderBy\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9c09d78-2f4f-4cf0-8ab1-29754bc4f3ba",
+              "name": "List of log entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "entries:list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"orderBy\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1983-10-14T07:19:26.690Z\",\n      \"receiveTimestamp\": \"1985-10-10T01:35:47.322Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1965-03-20T06:30:58.994Z\",\n      \"receiveTimestamp\": \"1989-05-22T17:30:54.850Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://logging.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "logging.write logging.read logging.admin cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f7ad7d0f-8793-4d4d-b180-b6da714c7118",
+    "name": "Google Cloud Logging Bucket Entries:list API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
+      "type": "text/plain"
+    }
+  }
+}

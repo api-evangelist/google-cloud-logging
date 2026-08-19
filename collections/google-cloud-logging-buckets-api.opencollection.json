@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Logging Bucket Buckets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buckets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://logging.googleapis.com/v2/:parent/buckets",
+            "params": [
+              {
+                "name": "parent",
+                "value": "projects/my-project/locations/global",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List buckets"
+        },
+        {
+          "info": {
+            "name": "Create bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://logging.googleapis.com/v2/:parent/buckets",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create bucket"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

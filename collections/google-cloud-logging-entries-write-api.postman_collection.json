@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "b5d242ef-ee87-4304-8005-08670109b519",
+      "name": "Entries:write",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dfdfe5f9-9628-4a44-9979-9ac1aa4ad600",
+          "name": "Write log entries",
+          "request": {
+            "name": "Write log entries",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "entries:write"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    },\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0548fd34-d5a1-4b76-9dc3-d9d24f9dcc3e",
+              "name": "Empty success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "entries:write"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"2019-03-18T09:33:22.415Z\",\n      \"receiveTimestamp\": \"1991-05-07T12:47:13.179Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1967-01-08T12:08:28.200Z\",\n      \"receiveTimestamp\": \"1951-07-17T05:51:43.345Z\",\n      \"severity\": \"EMERGENCY\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://logging.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "logging.write logging.read logging.admin cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8a30dcd0-d568-49ea-b44c-fef64bf20dde",
+    "name": "Google Cloud Logging Bucket Entries:write API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
+      "type": "text/plain"
+    }
+  }
+}

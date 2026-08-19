@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Logging Bucket Google Cloud Logging API API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Google Cloud Logging API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get sink",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://logging.googleapis.com/v2/:sinkName",
+            "params": [
+              {
+                "name": "sinkName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get sink"
+        },
+        {
+          "info": {
+            "name": "Delete sink",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://logging.googleapis.com/v2/:sinkName",
+            "params": [
+              {
+                "name": "sinkName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete sink"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
