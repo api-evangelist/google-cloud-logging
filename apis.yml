@@ -78,7 +78,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -128,7 +128,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -178,7 +178,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -228,7 +228,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -278,7 +278,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -328,7 +328,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -378,7 +378,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -430,7 +430,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
@@ -480,7 +480,7 @@ apis:
     url: https://cloud.google.com/logging/docs/access-control
   - type: Guides
     url: https://cloud.google.com/logging/docs/structured-logging
-  - type: Samples
+  - type: Examples
     url: https://cloud.google.com/logging/docs/samples
   - type: Troubleshooting
     url: https://cloud.google.com/logging/docs/troubleshooting
