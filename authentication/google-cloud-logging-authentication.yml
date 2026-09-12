@@ -1,18 +1,68 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-09-12'
+method: searched
 source: openapi/google-cloud-logging-openapi.yml
+docs: https://docs.cloud.google.com/logging/docs/access-control
+additional_docs:
+  - https://cloud.google.com/docs/authentication
+  - https://accounts.google.com/.well-known/openid-configuration
+  - https://accounts.google.com/.well-known/oauth-authorization-server
+note: >-
+  Upgraded from the 2026-07-11 derived pass. The spec-derived baseline named only the
+  authorizationCode flow and four scopes; the Discovery document and Google's own auth docs
+  add the cloud-platform.read-only scope, the mTLS endpoint, and the service-account /
+  workload-identity-federation credential paths an actual integration uses. Both OAuth
+  discovery documents were fetched live on 2026-09-12 (HTTP 200) and saved under well-known/.
 summary:
-  types:
-  - oauth2
-  oauth2_flows:
-  - authorizationCode
+  types: [oauth2, openIdConnect, mutualTLS]
+  oauth2_flows: [authorizationCode, service-account-jwt, workload-identity-federation]
+  api_key_in: []
+  api_keys_supported: false
+  bearer_token: Authorization -> Bearer <OAuth 2.0 access token>
 schemes:
-- name: OAuth2
-  type: oauth2
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-    scopes: 4
-  sources:
-  - openapi/google-cloud-logging-openapi.yml
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+        scopes: 5
+    sources: [openapi/google-cloud-logging-openapi.yml, discovery/google-cloud-logging-discovery-v2.json]
+  - name: GoogleOIDC
+    type: openIdConnect
+    openIdConnectUrl: https://accounts.google.com/.well-known/openid-configuration
+    issuer: https://accounts.google.com
+    jwks_uri: https://www.googleapis.com/oauth2/v3/certs
+    sources: [well-known/google-cloud-logging-openid-configuration.json]
+  - name: MutualTLS
+    type: mutualTLS
+    endpoint: https://logging.mtls.googleapis.com/
+    sources: [discovery/google-cloud-logging-discovery-v2.json]
+credential_types:
+  - type: user-oauth
+    note: Interactive authorizationCode flow, used by gcloud auth login and by MCP clients.
+  - type: service-account
+    note: >-
+      Signed JWT exchanged for an access token — the normal server-to-server path. Preferred
+      form is Application Default Credentials rather than a downloaded key file.
+  - type: workload-identity-federation
+    note: Recommended over service-account key files for workloads outside Google Cloud.
+  - type: api-key
+    supported: false
+    note: >-
+      API keys do not authorize Cloud Logging calls. The MCP setup page mentions API keys as a
+      connection field, but authorization on the Logging surface is OAuth + IAM.
+authorization:
+  model: Google Cloud IAM layered over the OAuth scope
+  note: >-
+    The scope decides what class of call the token may make; the IAM role on the resource
+    decides whether this principal may make it. Both must pass — a cloud-platform token with
+    no Logging role still gets 403 PERMISSION_DENIED.
+  roles:
+    - roles/logging.viewer
+    - roles/logging.privateLogViewer
+    - roles/logging.logWriter
+    - roles/logging.configWriter
+    - roles/logging.admin
+    - roles/mcp.toolUser
+  docs: https://docs.cloud.google.com/logging/docs/access-control
+scopes_detail: scopes/google-cloud-logging-scopes.yml

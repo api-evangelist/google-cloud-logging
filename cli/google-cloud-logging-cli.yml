@@ -1,0 +1,76 @@
+generated: '2026-09-12'
+method: searched
+source: https://docs.cloud.google.com/sdk/gcloud/reference/logging
+name: gcloud logging
+description: >-
+  Cloud Logging's first-party command surface is the `gcloud logging` command group inside the
+  Google Cloud CLI. It is not shipped as a standalone binary or registry package; it is
+  installed with the gcloud SDK.
+install:
+  - method: installer
+    url: https://cloud.google.com/sdk/docs/install
+    command: curl https://sdk.cloud.google.com | bash
+  - method: apt
+    command: sudo apt-get install google-cloud-cli
+  - method: homebrew
+    command: brew install --cask google-cloud-sdk
+auth:
+  command: gcloud auth login
+  application_default: gcloud auth application-default login
+command_groups:
+  - group: buckets
+    commands: [create, delete, describe, list, undelete, update]
+    description: Manage log buckets.
+  - group: links
+    commands: [create, delete, describe, list]
+    description: Manage linked BigQuery datasets on a log bucket.
+  - group: locations
+    commands: [describe, list]
+    description: Query Cloud Logging locations.
+  - group: logs
+    commands: [delete, list]
+    description: Manage the logs in a project.
+  - group: metrics
+    commands: [create, delete, describe, list, update]
+    description: Manage logs-based metrics.
+  - group: operations
+    commands: [cancel, describe, list]
+    description: Manage long-running Cloud Logging operations.
+  - group: recent-queries
+    commands: [list]
+    description: List recent Logs Explorer queries.
+  - group: resource-descriptors
+    commands: [list]
+    description: List monitored resource descriptors.
+  - group: saved-queries
+    commands: [create, delete, describe, list, update]
+    description: Manage saved Logs Explorer queries.
+  - group: scopes
+    commands: [create, delete, describe, list, update]
+    description: Manage log scopes.
+  - group: settings
+    commands: [describe, update]
+    description: Manage Logs Router settings for an organization or folder (CMEK, default region).
+  - group: sinks
+    commands: [create, delete, describe, list, update]
+    description: Manage Log Router sinks that route entries to a destination.
+  - group: views
+    commands: [add-iam-policy-binding, create, delete, describe, get-iam-policy, list, remove-iam-policy-binding, set-iam-policy, update]
+    description: Manage log views and their IAM bindings.
+top_level_commands:
+  - command: gcloud logging read
+    description: Read log entries with a Logging query-language filter.
+  - command: gcloud logging write
+    description: Write a single log entry.
+  - command: gcloud logging copy
+    description: Copy log entries from a bucket to a destination.
+key_flows:
+  - name: Write then query a log entry
+    docs: https://docs.cloud.google.com/logging/docs/write-query-log-entries-gcloud
+    steps:
+      - gcloud logging write my-test-log "A simple entry"
+      - gcloud logging read "logName=projects/PROJECT_ID/logs/my-test-log" --limit 10
+  - name: Route logs to a destination
+    steps:
+      - gcloud logging sinks create SINK_NAME DESTINATION --log-filter=FILTER
+      - gcloud logging sinks describe SINK_NAME

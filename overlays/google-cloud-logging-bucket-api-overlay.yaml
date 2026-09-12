@@ -1,0 +1,43 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Google Cloud Logging Bucket API
+  version: 1.0.0
+extends: openapi/google-cloud-logging-bucket-api-openapi.yml
+x-generated: '2026-09-12'
+x-method: generated
+x-source: >-
+  Derived from artifacts in this repository — the live Discovery document
+  (discovery/google-cloud-logging-discovery-v2.json, revision 20260818), the live MCP
+  tools/list probe, the published quotas page and the conventions/errors artifacts. The
+  underlying OpenAPI is never mutated.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: google-cloud-logging
+      x-apievangelist-enriched: 2026-09-12
+      x-authoritative-contract: https://logging.googleapis.com/$discovery/rest?version=v2
+      x-contract-revision: '20260818'
+      x-error-format: google-rpc-status
+      x-idempotency-coverage: partial
+      x-rate-limit-headers: none
+      x-mcp-server: https://logging.googleapis.com/mcp
+      x-deprecation-notice-period: 12 months
+  - target: $.servers
+    update:
+      x-mtls-endpoint: https://logging.mtls.googleapis.com
+      x-regional-endpoints: 40 regional endpoints are enumerated in the Discovery document.
+  - target: $.paths['/v2/{name}/bucket'].get
+    update:
+      x-agentic-access-ref: agentic-access/google-cloud-logging-agentic-access.yml#getBucket
+      x-error-catalog: errors/google-cloud-logging-problem-types.yml
+      x-conventions: conventions/google-cloud-logging-conventions.yml
+  - target: $.paths['/v2/{name}/bucket'].patch
+    update:
+      x-agentic-access-ref: agentic-access/google-cloud-logging-agentic-access.yml#updateBucket
+      x-error-catalog: errors/google-cloud-logging-problem-types.yml
+      x-conventions: conventions/google-cloud-logging-conventions.yml
+  - target: $.paths['/v2/{name}/bucket'].delete
+    update:
+      x-agentic-access-ref: agentic-access/google-cloud-logging-agentic-access.yml#deleteBucket
+      x-error-catalog: errors/google-cloud-logging-problem-types.yml
+      x-conventions: conventions/google-cloud-logging-conventions.yml

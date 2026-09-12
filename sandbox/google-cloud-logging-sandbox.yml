@@ -1,0 +1,42 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://cloud.google.com/free, https://docs.cloud.google.com/logging/docs/write-query-log-entries-gcloud,
+  https://cloud.google.com/stackdriver/pricing
+description: >-
+  Cloud Logging has NO test-mode/live-mode separation. There is no sandbox host, no test key
+  prefix, no magic test identifiers and no fixture tooling — every call goes to production
+  logging.googleapis.com against a real Google Cloud project. What stands in for a sandbox is
+  a throwaway project inside the free tier, where the first 50 GiB of log storage per project
+  per month is free.
+test_live_separation:
+  supported: false
+  key_prefixes: null
+  note: >-
+    Credentials are OAuth tokens over a real project. Isolation is achieved by using a separate
+    Google Cloud project, not by a mode flag.
+free_evaluation:
+  free_tier:
+    allotment: 50 GiB of Logging storage per project per month
+    url: https://cloud.google.com/stackdriver/pricing
+  free_trial:
+    credit: USD 300
+    url: https://cloud.google.com/free
+  note: Both are platform-level, not Logging-specific.
+test_values: []
+test_values_note: >-
+  Google publishes no magic test log names, test resource ids or simulator values. Nothing is
+  invented here; the field is empty because the provider publishes nothing to put in it.
+safe_rehearsal:
+  approach: throwaway-project-and-scratch-log
+  steps:
+    - Create or select a disposable Google Cloud project.
+    - gcloud logging write my-test-log "A simple entry"
+    - gcloud logging read "logName=projects/PROJECT_ID/logs/my-test-log" --limit 10
+    - gcloud logging logs delete my-test-log
+  docs: https://docs.cloud.google.com/logging/docs/write-query-log-entries-gcloud
+  caution: >-
+    `gcloud logging logs delete` is irreversible and removes every entry under that log name.
+    See the reversibility block in conventions/google-cloud-logging-conventions.yml.
+dry_run:
+  supported: false

@@ -1,0 +1,80 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  discovery/google-cloud-logging-discovery-v2.json, the live OIDC/OAuth metadata saved under
+  well-known/, https://google.aip.dev/193, and https://cloud.google.com/security/compliance
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OpenAPI securityScheme type oauth2 (authorizationCode) and the Discovery document's
+      auth.oauth2.scopes block with five scopes; the MCP server authenticates with OAuth 2.0.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      https://accounts.google.com/.well-known/openid-configuration returned HTTP 200 on
+      2026-09-12; saved verbatim at well-known/google-cloud-logging-openid-configuration.json.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: >-
+      https://accounts.google.com/.well-known/oauth-authorization-server returned HTTP 200 on
+      2026-09-12; saved at well-known/google-cloud-logging-oauth-authorization-server.json.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://www.google.com/.well-known/security.txt returned HTTP 200 with Contact, Policy,
+      Encryption, Acknowledgments and Expires fields.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use the Google API error envelope (google.rpc.Status: error.code / error.message /
+      error.status / error.details) per AIP-193, not application/problem+json.
+  - id: grpc
+    conforms: true
+    evidence: >-
+      First-party protobuf service definitions published at
+      github.com/googleapis/googleapis/tree/master/google/logging/v2; saved verbatim under grpc/.
+  - id: google-discovery-document
+    conforms: true
+    evidence: >-
+      https://logging.googleapis.com/$discovery/rest?version=v2 returns a Google API Discovery
+      Document (id logging:v2, revision 20260818, 94 schemas, 254 methods).
+  - id: model-context-protocol
+    conforms: true
+    evidence: >-
+      POST https://logging.googleapis.com/mcp with method tools/list returned HTTP 200 and six
+      JSON-RPC 2.0 tools with inputSchema on 2026-09-12.
+  - id: cursor-pagination
+    conforms: true
+    evidence: pageSize / pageToken request fields and nextPageToken response field across list methods.
+  - id: mutual-tls
+    conforms: true
+    evidence: >-
+      Discovery document declares mtlsRootUrl https://logging.mtls.googleapis.com/ alongside
+      the standard root.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header is documented or present in the spec. Replay safety is achieved
+      through LogEntry.insertId de-duplication instead (see conventions/).
+  - id: opentelemetry-otlp-logs
+    conforms: true
+    evidence: >-
+      Release note 2026-08-14 — "The Telemetry API for logs ingestion is generally available
+      (GA)", ingesting OTLP logs via the OpenTelemetry Collector.
+domain_standards:
+  - id: opentelemetry-logs-data-model
+    market: observability
+    conforms: true
+    evidence: >-
+      The Telemetry API accepts OTLP log records from the OpenTelemetry Collector
+      (release note 2026-08-14), which is the domain standard for this market — an operator
+      already emitting OTLP integrates with no bespoke connector.
+    spec_location: https://docs.cloud.google.com/logging/docs/release-notes
+compliance:
+  published: true
+  url: https://cloud.google.com/security/compliance
+  note: >-
+    Google Cloud publishes its certification and attestation portfolio centrally; see
+    security/google-cloud-logging-trust-center.yml for the named certifications and their
+    evidence.

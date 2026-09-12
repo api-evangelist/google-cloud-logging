@@ -1,6 +1,15 @@
 aid: google-cloud-logging
 name: Google Cloud Logging
-description: Google Cloud Logging is a fully-managed service that performs at scale and can ingest application and system log data from thousands of VMs. Allows you to search, monitor, and analyze log data and events from Google Cloud and AWS.
+description: >-
+  Google Cloud Logging is a fully managed, real-time log management service that ingests,
+  stores, searches, analyzes, routes and alerts on application and system log data at scale
+  across Google Cloud, AWS and on-premises environments. The v2 API writes log entries and
+  manages the configuration surface behind them — log buckets and views, Log Router sinks and
+  exclusions, logs-based metrics, log scopes, linked BigQuery datasets and CMEK settings.
+  Google publishes it as a Discovery document with 254 methods, as first-party gRPC service
+  definitions, through seven official client libraries and the gcloud logging command group,
+  and — since April 2026 — through a fully managed remote MCP server at
+  logging.googleapis.com/mcp that exposes six read-only tools to agents.
 deliveryModel:
   model: saas
   open_source: false
@@ -29,7 +38,7 @@ accessModel:
 image: ''
 type: Index
 created: '2024-01-01'
-modified: '2026-04-28'
+modified: '2026-09-12'
 specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging.yml
 tags:
@@ -37,6 +46,12 @@ tags:
   - Logging
   - Monitoring
   - Observability
+  - Telemetry
+  - Log Management
+  - SRE
+  - DevOps
+  - OpenTelemetry
+  - Google Cloud
 apis:
 - aid: google-cloud-logging:google-cloud-logging-bucket-api
   name: Google Cloud Logging Bucket API
@@ -48,6 +63,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-bucket-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-bucket-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -98,6 +115,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-buckets-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-buckets-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -148,6 +167,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-entries-copy-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-entries-copy-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -198,6 +219,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-entries-list-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-entries-list-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -248,6 +271,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-entries-tail-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-entries-tail-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -298,6 +323,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-entries-write-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-entries-write-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -348,6 +375,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-exclusions-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-exclusions-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -400,6 +429,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-google-cloud-logging-api-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-api-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -450,6 +481,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-logging-sinks-api-openapi.yml
+  - type: Overlay
+    url: overlays/google-cloud-logging-sinks-api-overlay.yaml
   - type: Documentation
     url: https://cloud.google.com/logging/docs
   - type: Pricing
@@ -504,7 +537,7 @@ common:
   - type: Portal
     url: https://console.cloud.google.com
   - type: GettingStarted
-    url: https://cloud.google.com/logging/docs/quickstarts
+    url: https://cloud.google.com/logging/docs/quickstart
   - type: Authentication
     url: https://cloud.google.com/docs/authentication
   - type: Support
@@ -542,9 +575,69 @@ common:
   - type: Issue Tracker
     url: https://cloud.google.com/support/docs/issue-trackers
   - type: Security
-    url: https://cloud.google.com/logging/docs/access-control
+    url: https://g.co/vrp
   - type: Integrations
     url: https://cloud.google.com/marketplace
+  - type: Discovery
+    url: discovery/google-cloud-logging-discovery-v2.json
+  - type: Protobuf
+    name: LoggingServiceV2
+    url: grpc/google-cloud-logging-logging.proto
+  - type: Protobuf
+    name: ConfigServiceV2
+    url: grpc/google-cloud-logging-logging-config.proto
+  - type: Protobuf
+    name: MetricsServiceV2
+    url: grpc/google-cloud-logging-logging-metrics.proto
+  - type: Protobuf
+    name: LogEntry
+    url: grpc/google-cloud-logging-log-entry.proto
+  - type: MCPServer
+    url: mcp/google-cloud-logging-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/google-cloud-logging-tool-crosswalk.yml
+  - type: Packages
+    url: packages/google-cloud-logging-packages.yml
+  - type: SDKs
+    url: packages/google-cloud-logging-packages.yml
+  - type: CLI
+    url: cli/google-cloud-logging-cli.yml
+  - type: WellKnown
+    url: well-known/google-cloud-logging-well-known.yml
+  - type: SecurityTxt
+    url: well-known/google-cloud-logging-security.txt
+  - type: LLMsTxt
+    url: llms/google-cloud-logging-llms.txt
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Conventions
+    url: conventions/google-cloud-logging-conventions.yml
+  - type: Idempotency
+    url: conventions/google-cloud-logging-conventions.yml
+  - type: ErrorCatalog
+    url: errors/google-cloud-logging-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/google-cloud-logging-lifecycle.yml
+  - type: Deprecation
+    url: https://cloud.google.com/terms/deprecation
+  - type: Conformance
+    url: conformance/google-cloud-logging-conformance.yml
+  - type: Compliance
+    url: https://cloud.google.com/security/compliance
+  - type: TrustCenter
+    url: security/google-cloud-logging-trust-center.yml
+  - type: DataModel
+    url: data-model/google-cloud-logging-data-model.yml
+  - type: Sandbox
+    url: sandbox/google-cloud-logging-sandbox.yml
+  - type: ChangeLog
+    url: changelog/google-cloud-logging-changelog.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-logging-rate-limits.yml
+  - type: Plans
+    url: plans/google-cloud-logging-plans-pricing.yml
+  - type: FinOps
+    url: finops/google-cloud-logging-finops.yml
 integrations:
   - name: Become a Partner
 maintainers:
@@ -556,3 +649,11 @@ overlays:
     url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-search.yml
   - type: API Evangelist Ratings
     url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-ratings.yml
+
+x-enrichment:
+  date: '2026-09-12'
+  status: enriched
+  artifacts_added: 36
+  pass: local-v3
+x-parent: google-cloud-platform
+x-relationship: product

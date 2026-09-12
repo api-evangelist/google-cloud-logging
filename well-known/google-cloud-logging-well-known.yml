@@ -1,0 +1,202 @@
+generated: '2026-09-12'
+method: probed
+source: live HTTPS probes of every host this record knows
+note: >-
+  Probed the registrable domain (google.com + www), the docs host (cloud.google.com + www),
+  the API host from OpenAPI servers[] and apis.yml baseURL (logging.googleapis.com), the
+  console/portal host (console.cloud.google.com), the status host (status.cloud.google.com),
+  and the two OAuth hosts the contract names (accounts.google.com authorizationUrl,
+  oauth2.googleapis.com tokenUrl). Real documents were served on google.com/www.google.com
+  (RFC 9116 security.txt) and accounts.google.com (OIDC discovery + RFC 8414 authorization
+  server metadata). console.cloud.google.com is a single-page-app catch-all that answers 200
+  with the same ~940KB HTML shell for every path including the negative control, so every
+  200 on that host is discarded.
+hit_count: 4
+hosts:
+  - host: https://www.google.com
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: google-cloud-logging-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 404
+      - path: /apis.yml
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404
+  - host: https://google.com
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: google-cloud-logging-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 404
+      - path: /apis.yml
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404
+  - host: https://accounts.google.com
+    note: >-
+      Not an apis.yml baseURL — this is the OAuth authorization host named by the
+      authorizationUrl in the Cloud Logging OpenAPI securityScheme, which is exactly the
+      third-host case the contract says to probe.
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: google-cloud-logging-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: google-cloud-logging-oauth-authorization-server.json
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404
+  - host: https://logging.googleapis.com
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 404
+      - path: /apis.yml
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404
+  - host: https://cloud.google.com
+    note: >-
+      Docs host. Every named path returns a 404 HTML page; the negative control returned a
+      200 HTML shell, so no 200 on this host would have been trusted anyway.
+    path_echo_control: failed
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 404
+      - path: /apis.yml
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 200
+  - host: https://console.cloud.google.com
+    note: >-
+      SPA catch-all. All eleven paths AND the negative control returned HTTP 200 with the
+      same ~940KB HTML console shell. No document was saved from this host.
+    path_echo_control: failed
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+      - path: /.well-known/openid-configuration
+        status: 200
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+      - path: /.well-known/api-catalog
+        status: 200
+      - path: /.well-known/ai-plugin.json
+        status: 200
+      - path: /.well-known/apis.json
+        status: 200
+      - path: /apis.json
+        status: 200
+      - path: /apis.yml
+        status: 200
+      - path: /.well-known/aauth-resource.json
+        status: 200
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 200
+  - host: https://status.cloud.google.com
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 404
+      - path: /apis.yml
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404
+  - host: https://oauth2.googleapis.com
+    note: OAuth token host named by tokenUrl in the OpenAPI securityScheme.
+    path_echo_control: passed
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/gcl-negative-control-7f3ab91c.json
+        status: 404

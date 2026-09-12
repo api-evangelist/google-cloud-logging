@@ -1,0 +1,127 @@
+generated: '2026-09-12'
+method: derived
+source: >-
+  mcp/google-cloud-logging-mcp-tools-list.json (live tools/list, 2026-09-12) bound against the
+  operationIds in openapi/ and the method ids in discovery/google-cloud-logging-discovery-v2.json
+description: >-
+  Binds every tool published by the Cloud Logging remote MCP server to the REST operation
+  behind it. Two surfaces are compared: the nine refined OpenAPI documents in openapi/ (15
+  operations, an API Evangelist subset) and Google's own Discovery document (254 methods,
+  revision 20260818), which is the authoritative REST contract. Where an MCP tool has no
+  operation in our OpenAPI subset but does have one in the Discovery document, the row says so
+  rather than claiming a gap that does not exist.
+surfaces:
+  openapi:
+    files: openapi/*.yml
+    operations: 15
+    gated: false
+    note: >-
+      An API Evangelist-curated subset. The provider's own machine-readable contract is the
+      Discovery document, not these files.
+  discovery:
+    file: discovery/google-cloud-logging-discovery-v2.json
+    url: https://logging.googleapis.com/$discovery/rest?version=v2
+    methods: 254
+    revision: '20260818'
+    gated: false
+  grpc:
+    files: grpc/*.proto
+    source: https://github.com/googleapis/googleapis/tree/master/google/logging/v2
+    gated: false
+  mcp:
+    url: https://logging.googleapis.com/mcp
+    tools: 6
+    gated: false
+    note: tools/list answers anonymously; tool invocation requires an OAuth token.
+  graphql: null
+crosswalk:
+  - tool: list_log_entries
+    category: read-logs
+    rest: [listLogEntries]
+    discovery_method: logging.entries.list
+    binding: rest
+    confidence: high
+    note: >-
+      Tool inputSchema (filter, orderBy, pageSize, pageToken, projectIds, resourceNames)
+      matches the ListLogEntriesRequest body one-for-one; the tool description cites the same
+      Logging query language page as the REST reference.
+  - tool: list_log_names
+    category: read-logs
+    rest: []
+    discovery_method: logging.projects.logs.list
+    binding: rest
+    confidence: high
+    note: >-
+      No operation in our OpenAPI subset. The backing REST method exists in the Discovery
+      document as logging.projects.logs.list (and the folders/organizations/billingAccounts
+      siblings). This is an openapi-subset gap, not an MCP-only tool.
+  - tool: get_bucket
+    category: log-storage
+    rest: [getBucket]
+    discovery_method: logging.projects.locations.buckets.get
+    binding: rest
+    confidence: high
+  - tool: list_buckets
+    category: log-storage
+    rest: [listBuckets]
+    discovery_method: logging.projects.locations.buckets.list
+    binding: rest
+    confidence: high
+  - tool: get_view
+    category: log-storage
+    rest: []
+    discovery_method: logging.projects.locations.buckets.views.get
+    binding: rest
+    confidence: high
+    note: openapi-subset gap; the REST method is published in the Discovery document.
+  - tool: list_views
+    category: log-storage
+    rest: []
+    discovery_method: logging.projects.locations.buckets.views.list
+    binding: rest
+    confidence: high
+    note: openapi-subset gap; the REST method is published in the Discovery document.
+mcp_only: []
+rest_only:
+  - capability: write-logs
+    operations: [writeLogEntries]
+    discovery_methods: [logging.entries.write]
+    reason: >-
+      Ingestion has no MCP tool. Every published tool carries readOnlyHint true, so the MCP
+      server deliberately does not expose the write path.
+  - capability: log-export-routing
+    operations: [createSink, getSink, listSinks, deleteSink]
+    discovery_methods: [logging.projects.sinks.create, logging.projects.sinks.get, logging.projects.sinks.list, logging.projects.sinks.delete, logging.projects.sinks.patch, logging.projects.sinks.update]
+    reason: Log Router sink management is not exposed as MCP tools.
+  - capability: exclusions
+    operations: [createExclusion, listExclusions]
+    discovery_methods: [logging.projects.exclusions.create, logging.projects.exclusions.list, logging.projects.exclusions.patch, logging.projects.exclusions.delete]
+    reason: Exclusion management is not exposed as MCP tools.
+  - capability: bucket-mutation
+    operations: [createBucket, updateBucket, deleteBucket]
+    discovery_methods: [logging.projects.locations.buckets.create, logging.projects.locations.buckets.patch, logging.projects.locations.buckets.delete, logging.projects.locations.buckets.undelete]
+    reason: >-
+      Only the read halves of the bucket surface (get/list) have tools; create/update/delete
+      do not.
+  - capability: streaming-tail
+    operations: [tailLogEntries]
+    discovery_methods: [logging.entries.tail]
+    reason: entries.tail is a bidirectional streaming method with no MCP equivalent.
+  - capability: bulk-copy
+    operations: [copyLogEntries]
+    discovery_methods: [logging.entries.copy]
+    reason: Long-running copy operation with no MCP equivalent.
+  - capability: logs-based-metrics
+    operations: []
+    discovery_methods: [logging.projects.metrics.create, logging.projects.metrics.get, logging.projects.metrics.list, logging.projects.metrics.update, logging.projects.metrics.delete]
+    reason: Not in the OpenAPI subset and not exposed as MCP tools.
+coverage:
+  tools_named: 6
+  tools_bound_to_openapi: 3
+  tools_bound_to_discovery: 6
+  mcp_only: 0
+  rest_ops_openapi_total: 15
+  rest_ops_openapi_with_tool: 3
+  rest_methods_discovery_total: 254
+  read_only_tools: 6
+  write_tools: 0

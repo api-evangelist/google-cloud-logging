@@ -1,0 +1,95 @@
+generated: '2026-09-12'
+method: searched
+status: published
+source: https://docs.cloud.google.com/logging/docs/use-logging-mcp
+references:
+  - https://docs.cloud.google.com/logging/docs/reference/v2_mcp/mcp
+  - https://docs.cloud.google.com/logging/docs/release-notes
+note: >-
+  Google ships a first-party, fully managed REMOTE MCP server for Cloud Logging. It went
+  generally available on 2026-04-22 per the Cloud Logging release notes and is enabled with
+  the Cloud Logging API itself — there is no package to install and nothing to run locally.
+  The tool list below was read from a live anonymous tools/list POST against the endpoint on
+  2026-09-12 (HTTP 200), not from the documentation, so every tool name, description and
+  inputSchema in mcp/google-cloud-logging-mcp-tools-list.json is the server's own.
+deployment:
+  mode: remote
+  endpoint: https://logging.googleapis.com/mcp
+  auth: oauth
+  verified: probed
+server:
+  name: Cloud Logging MCP server
+  transport: http
+  url: https://logging.googleapis.com/mcp
+  ga_date: '2026-04-22'
+  enablement: Enabled when the Cloud Logging API (logging.googleapis.com) is enabled on the project.
+authorization:
+  model: OAuth 2.0 + Google Cloud IAM
+  scopes:
+    - https://www.googleapis.com/auth/logging.admin
+    - https://www.googleapis.com/auth/logging.read
+    - https://www.googleapis.com/auth/logging.write
+  iam_roles:
+    - roles/mcp.toolUser
+    - roles/logging.admin
+x-evidence:
+  probe:
+    fetched: '2026-09-12'
+    url: https://logging.googleapis.com/mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 200
+    content_type: application/json; charset=UTF-8
+    tools_returned: 6
+    anonymous: true
+    note: >-
+      tools/list answers without credentials and returns full inputSchema for every tool.
+      Calling a tool still requires an OAuth access token with a logging scope.
+  raw_file: mcp/google-cloud-logging-mcp-tools-list.json
+tools:
+  - name: list_log_entries
+    description: >-
+      Use this as the primary tool to search and retrieve log entries from Google Cloud
+      Logging. It's essential for debugging application behavior, finding specific error
+      messages, or auditing events.
+    input_schema_properties: [filter, orderBy, pageSize, pageToken, projectIds, resourceNames]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.entries.list
+    source_operation: openapi/google-cloud-logging-entries-list-api-openapi.yml#listLogEntries
+  - name: list_log_names
+    description: Use this as the primary tool to list the log names in a Google Cloud project.
+    input_schema_properties: [pageSize, pageToken, parent, resourceNames]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.projects.logs.list
+    source_operation: null
+  - name: get_bucket
+    description: Use this as the primary tool to get a specific log bucket by name.
+    input_schema_properties: [name]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.projects.locations.buckets.get
+    source_operation: openapi/google-cloud-logging-bucket-api-openapi.yml#getBucket
+  - name: list_buckets
+    description: Use this as the primary tool to list the log buckets in a Google Cloud project.
+    input_schema_properties: [pageSize, pageToken, parent]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.projects.locations.buckets.list
+    source_operation: openapi/google-cloud-logging-buckets-api-openapi.yml#listBuckets
+  - name: get_view
+    description: Use this as the primary tool to get a specific view on a log bucket.
+    input_schema_properties: [name]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.projects.locations.buckets.views.get
+    source_operation: null
+  - name: list_views
+    description: Use this as the primary tool to list the log views in a given log bucket.
+    input_schema_properties: [pageSize, pageToken, parent]
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    rest_method: logging.projects.locations.buckets.views.list
+    source_operation: null
+surface_shape:
+  read_only: true
+  note: >-
+    All six published tools carry readOnlyHint true. The MCP surface is a READ projection of
+    Cloud Logging: it can search entries and inspect buckets/views, but it exposes no
+    entries.write, no sink/exclusion/metric mutation and no delete. An agent cannot write or
+    destroy log data through this server.

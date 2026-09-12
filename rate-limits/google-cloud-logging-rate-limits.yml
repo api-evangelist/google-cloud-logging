@@ -4,10 +4,15 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Cloud Logging
 providerId: google-cloud-logging
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-12'
+generated: '2026-09-12'
+method: searched
+source: https://docs.cloud.google.com/logging/quotas
+note: >-
+  Replaces the 2026-05-04 bulk-sweep scaffold, which asserted invented per-key values (10
+  requests/minute free tier, X-RateLimit-* headers) that Google does not publish. Every figure
+  below is quoted from the provider's own Quotas and limits page, read 2026-09-12. Cloud
+  Logging quota is per Google Cloud PROJECT, not per API key.
 tags:
   - Cloud
   - Logging
@@ -15,78 +20,92 @@ tags:
   - Observability
   - Rate Limiting
   - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Google Cloud Logging API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: >-
+  Published Cloud Logging API v2 quotas and entry-size limits, and the (absent) runtime
+  rate-limit signalling an agent can observe on a response.
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+headers_note: >-
+  Cloud Logging publishes NO rate-limit response headers. There is no X-RateLimit-*,
+  RateLimit-* or Retry-After to read. An agent learns it is throttled only from the error body
+  — HTTP 429 with "status": "RESOURCE_EXHAUSTED" — and observes headroom out-of-band through
+  Cloud Monitoring quota metrics. This is a real gap for runtime agents and is recorded as an
+  absence, not guessed.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
+  status: RESOURCE_EXHAUSTED
   serviceUnavailable: 503
+limit_count: 8
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
+  - name: entries.write byte rate (primary regions)
+    scope: project
+    metric: bytes_per_minute
+    limit: 4.8 GB
     timeFrame: minute
-    applies:
-      - Google Cloud Logging API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+    raisable: true
+    applies: >-
+      asia-east1, asia-northeast1, asia-southeast1, asia-south1, europe-west1, europe-west2,
+      europe-west3, europe-west4, us-central1, us-east4, us-west1
+  - name: entries.write byte rate (all other regions)
+    scope: project
+    metric: bytes_per_minute
+    limit: 300 MB
+    timeFrame: minute
+    raisable: true
+  - name: entries.list request rate
+    scope: project
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+    raisable: false
+    note: >-
+      Also applies to billing accounts, folders and organizations, and is NOT hierarchical.
+      This is the binding constraint on any read-heavy or agent-driven query workload.
+  - name: Control-plane (management) request rate
+    scope: project
+    metric: requests_per_minute
+    limit: 600
+    timeFrame: minute
+    raisable: false
+  - name: Control-plane daily requests
+    scope: project
+    metric: requests_per_day
     limit: 1000
-    timeFrame: month
-    applies:
-      - Google Cloud Logging API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Google Cloud Logging API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Google Cloud Logging API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Google Cloud Logging API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+    timeFrame: day
+    raisable: false
+  - name: LogEntry size
+    scope: entry
+    metric: bytes
+    limit: 256 KiB
+    raisable: false
+  - name: Audit LogEntry size
+    scope: entry
+    metric: bytes
+    limit: 512 KiB
+    raisable: false
+  - name: entries.write request size
+    scope: request
+    metric: bytes
+    limit: 10 MB
+    raisable: false
+structural_limits:
+  - name: Labels per LogEntry
+    limit: 64
+    raisable: false
+  - name: Label key length
+    limit: 512 B
+    raisable: false
+  - name: Label value length
+    limit: 64 KiB
+    raisable: false
+  - name: Logging query-language filter length
+    limit: 20000 characters
+    raisable: false
+quota_increase:
+  url: https://console.cloud.google.com/iam-admin/quotas
+  note: entries.write throughput can be raised by request; entries.list and control quotas cannot.

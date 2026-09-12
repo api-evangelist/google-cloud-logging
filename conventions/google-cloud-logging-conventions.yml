@@ -1,0 +1,180 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://docs.cloud.google.com/logging/docs/reference/v2/rest, https://google.aip.dev/193,
+  https://docs.cloud.google.com/logging/quotas, and
+  discovery/google-cloud-logging-discovery-v2.json
+description: >-
+  Cross-cutting request/response semantics for the Cloud Logging API v2 — how an agent or SDK
+  is expected to authenticate, page, retry, interpret errors and undo work on this surface.
+authentication:
+  style: oauth2-bearer
+  scheme: Authorization -> Bearer <OAuth 2.0 access token>
+  flows: [authorizationCode, service-account (ADC), workload-identity-federation]
+  scopes:
+    - https://www.googleapis.com/auth/logging.read
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/logging.admin
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+  authorization: Google Cloud IAM roles layered over the OAuth scope.
+  mtls: https://logging.mtls.googleapis.com/
+  docs: https://docs.cloud.google.com/logging/docs/access-control
+  detail: authentication/google-cloud-logging-authentication.yml
+idempotency:
+  coverage: partial
+  mechanism: insert-id-deduplication
+  header: null
+  scope:
+    - writeLogEntries
+  retention: null
+  retention_note: >-
+    No time window is published. The reference states only the condition, verbatim: "If you
+    provide a value, then Logging considers other log entries in the same project, with the
+    same timestamp, and with the same insertId to be duplicates which are removed in a single
+    query result" — and immediately adds "there are no guarantees of de-duplication in the
+    export of logs." No window is asserted here because Google states none.
+  guarantee: best-effort
+  enforcement: read-time
+  summary: >-
+    Cloud Logging publishes NO Idempotency-Key header. The only replay handling on the
+    mutating surface is LogEntry.insertId on entries.write, and it is weaker than a true
+    idempotency key: it de-duplicates at READ time (duplicates are collapsed in a single query
+    result) rather than rejecting the duplicate write, and Google explicitly disclaims any
+    de-duplication guarantee for exported logs. It also covers exactly one of the write
+    operations. Every other mutation — createSink, createBucket, updateBucket, deleteBucket,
+    deleteSink, createExclusion, metric create/update — has no client-supplied replay token, so
+    a retried create after an ambiguous timeout can produce a duplicate or an ALREADY_EXISTS
+    error the caller has to disambiguate. Hence coverage: partial, not full.
+  docs: https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
+pagination:
+  style: cursor
+  request_params:
+    page_size: pageSize
+    page_token: pageToken
+  response_fields:
+    next_token: nextPageToken
+  defaults:
+    entries_list_page_size: 50
+  ordering:
+    param: orderBy
+    values: ["timestamp asc", "timestamp desc"]
+    default: timestamp asc
+    note: >-
+      Google's own reference recommends "timestamp desc" when listing recently ingested
+      entries because the default can be slow.
+  gotcha: >-
+    A non-empty nextPageToken with an EMPTY entries array does not mean the result set ended —
+    it means the search has not yet scanned every possible entry. Clients must keep following
+    the token.
+filtering:
+  language: Logging query language
+  param: filter
+  max_length: 20000 characters
+  docs: https://docs.cloud.google.com/logging/docs/view/logging-query-language
+  note: >-
+    The same filter string is the `filter` argument of the MCP list_log_entries tool, so a
+    filter written for REST works verbatim for an agent.
+field_selection:
+  style: google-fieldmask
+  params: [updateMask, fields]
+  note: >-
+    Patch/update methods take an updateMask; all methods accept the system `fields` parameter
+    for partial responses, and `prettyPrint`, `alt`, `quotaUser` as system parameters.
+versioning:
+  style: uri-path
+  current: v2
+  revision: '20260818'
+  detail: lifecycle/google-cloud-logging-lifecycle.yml
+error_envelope:
+  format: google-rpc-status
+  shape: '{"error": {"code": <http status>, "message": "...", "status": "<google.rpc.Code name>", "details": [...]}}'
+  detail_types: [google.rpc.ErrorInfo, google.rpc.RetryInfo, google.rpc.BadRequest]
+  error_info_fields: [reason, domain, metadata]
+  domain: logging.googleapis.com
+  not_rfc9457: true
+  detail: errors/google-cloud-logging-problem-types.yml
+  docs: https://google.aip.dev/193
+rate_limit_signaling:
+  headers: none
+  note: >-
+    Cloud Logging publishes no X-RateLimit-*/RateLimit-* response headers. Quota exhaustion is
+    signalled in the error body as HTTP 429 with status RESOURCE_EXHAUSTED, and quota usage is
+    observed out-of-band through Cloud Monitoring metrics rather than through the response.
+  detail: rate-limits/google-cloud-logging-rate-limits.yml
+request_tracing:
+  request_id_header: null
+  note: >-
+    No provider-documented request-id echo header. The trace correlation Cloud Logging does
+    document is on the log data itself — LogEntry.trace / spanId / traceSampled, which bind an
+    entry to a Cloud Trace span.
+long_running_operations:
+  style: google-lro
+  resource: projects.locations.operations
+  applies_to: [copyLogEntries, bucket create/update in some configurations, link create/delete]
+  note: >-
+    These return an Operation; the caller polls operations.get, and operations.cancel exists.
+reversibility:
+  grade: verified
+  summary: >-
+    The management surface is genuinely reversible and the windows are published; the
+    ingestion surface is not reversible at all, and that asymmetry is the thing an agent needs
+    to know before it acts.
+  surfaces:
+    - write_operation: createBucket / deleteBucket
+      operationId: deleteBucket
+      reversal: undelete
+      reversal_operation: logging.projects.locations.buckets.undelete
+      window: 7 days
+      window_stated: true
+      docs: https://docs.cloud.google.com/logging/docs/buckets
+      note: >-
+        Deleting a log bucket moves it to the DELETE_REQUESTED state, "and it stays in that
+        state for 7 days"; within that grace period locations.buckets.undelete (or Restore
+        deleted bucket in the console) brings it back, and Logging keeps routing logs into it
+        meanwhile. After 7 days the bucket and its data are permanently removed.
+    - write_operation: copyLogEntries
+      operationId: copyLogEntries
+      reversal: cancel
+      reversal_operation: logging.projects.locations.operations.cancel
+      window: while the long-running operation is still in progress
+      window_stated: true
+      docs: https://docs.cloud.google.com/logging/docs/export/copy
+      note: A copy job is a cancellable LRO; once it completes, the copied entries stay.
+    - write_operation: createSink / updateSink / deleteSink
+      operationId: deleteSink
+      reversal: null
+      window: null
+      window_stated: false
+      note: >-
+        No undelete. A deleted sink must be recreated by hand, and log entries that were not
+        routed while it was missing are NOT backfilled — the loss is unrecoverable.
+    - write_operation: createExclusion / deleteExclusion
+      operationId: createExclusion
+      reversal: null
+      window: null
+      window_stated: false
+      note: >-
+        Removing an exclusion restores future routing but does not recover entries excluded
+        while it was active.
+    - write_operation: writeLogEntries
+      operationId: writeLogEntries
+      reversal: null
+      window: null
+      window_stated: false
+      note: >-
+        There is no delete-one-entry operation. Ingested entries age out on the bucket's
+        retention period; the only bulk removal is logs.delete, which deletes every entry in a
+        log name and is itself irreversible.
+dry_run_mode:
+  supported: false
+  note: >-
+    No validate-only / dry-run parameter is documented on the Cloud Logging write or
+    management methods.
+cross_links:
+  authentication: authentication/google-cloud-logging-authentication.yml
+  scopes: scopes/google-cloud-logging-scopes.yml
+  errors: errors/google-cloud-logging-problem-types.yml
+  lifecycle: lifecycle/google-cloud-logging-lifecycle.yml
+  rate_limits: rate-limits/google-cloud-logging-rate-limits.yml
+  mcp: mcp/google-cloud-logging-mcp.yml

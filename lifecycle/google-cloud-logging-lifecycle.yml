@@ -1,0 +1,44 @@
+generated: '2026-09-12'
+method: searched
+source: https://cloud.google.com/terms/deprecation
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://docs.cloud.google.com/logging/docs/reference/v2/rest
+  note: >-
+    The REST surface is versioned in the path (/v2/...). The Discovery document carries a
+    dated revision (20260818) alongside the v2 version, which is how additive changes are
+    dated inside a stable major version.
+deprecation:
+  policy_url: https://cloud.google.com/terms/deprecation
+  terms_url: https://cloud.google.com/terms
+  notice_period: 12 months
+  sunset_header: false
+  summary: >-
+    Google's Cloud Platform Terms of Service commit to at least 12 months' notice before
+    discontinuing a generally available service or materially changing a customer-facing API
+    in a backwards-incompatible way, unless a materially similar replacement is offered. The
+    policy explicitly excludes pre-GA (alpha/beta/preview) features, and carves out changes
+    required by law, a material security risk, or substantial economic/technical burden. Cloud
+    Logging v2 is a GA service listed under that policy.
+  rfc8594_sunset_header: not documented
+  deprecation_notices: https://docs.cloud.google.com/logging/docs/release-notes
+sla:
+  url: https://cloud.google.com/stackdriver/sla
+  product: Google Cloud Observability (Cloud Logging) Service Level Agreement
+status_page: https://status.cloud.google.com/
+support:
+  url: https://cloud.google.com/support
+  issue_tracker: https://cloud.google.com/support/docs/issue-trackers
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in openapi/ or in the 254 methods of the Discovery document
+  (revision 20260818) carries a deprecated flag.
+regional_endpoints:
+  documented: true
+  count: 40
+  source: discovery/google-cloud-logging-discovery-v2.json#endpoints
+  note: >-
+    The Discovery document enumerates regional service endpoints
+    (logging.<region>.rep.googleapis.com) alongside the global logging.googleapis.com host,
+    and a separate mTLS root at logging.mtls.googleapis.com.

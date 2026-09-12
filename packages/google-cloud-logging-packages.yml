@@ -1,0 +1,84 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://docs.cloud.google.com/logging/docs/reference/libraries plus a metadata read of each
+  registry (registry.npmjs.org, pypi.org, search.maven.org, api.nuget.org, proxy.golang.org,
+  rubygems.org, repo.packagist.org) on 2026-09-12.
+note: >-
+  All seven are Google Cloud Client Libraries, published by the googleapis GitHub organization
+  and linked from the provider's own client-libraries page, so every one is official. Versions
+  and dates were read from each registry's metadata endpoint on 2026-09-12; none of these
+  libraries is stale — the oldest release is the Ruby gem at 2026-04-15, and five of seven
+  shipped within the last four months.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@google-cloud/logging"
+    url: https://www.npmjs.com/package/@google-cloud/logging
+    install: npm install @google-cloud/logging
+    repo: https://github.com/googleapis/nodejs-logging
+    official: true
+    version: 12.0.1
+    published: '2026-08-12'
+  - language: python
+    registry: pypi
+    name: google-cloud-logging
+    url: https://pypi.org/project/google-cloud-logging/
+    install: pip install google-cloud-logging
+    repo: https://github.com/googleapis/python-logging
+    official: true
+    version: 3.16.3
+    published: '2026-08-24'
+  - language: java
+    registry: maven
+    name: com.google.cloud:google-cloud-logging
+    url: https://central.sonatype.com/artifact/com.google.cloud/google-cloud-logging
+    install: "implementation 'com.google.cloud:google-cloud-logging:3.34.0'"
+    repo: https://github.com/googleapis/java-logging
+    official: true
+    version: 3.34.0
+    published: '2026-06-04'
+  - language: go
+    registry: go
+    name: cloud.google.com/go/logging
+    url: https://pkg.go.dev/cloud.google.com/go/logging
+    install: go get cloud.google.com/go/logging
+    repo: https://github.com/googleapis/google-cloud-go
+    official: true
+    version: v1.19.1
+    published: '2026-08-07'
+  - language: dotnet
+    registry: nuget
+    name: Google.Cloud.Logging.V2
+    url: https://www.nuget.org/packages/Google.Cloud.Logging.V2
+    install: dotnet add package Google.Cloud.Logging.V2
+    repo: https://github.com/googleapis/google-cloud-dotnet
+    official: true
+    version: 4.5.0
+    published: null
+    note: >-
+      NuGet's registration index returns the version but not a per-version publish date in the
+      page read; date left null rather than guessed.
+  - language: ruby
+    registry: rubygems
+    name: google-cloud-logging
+    url: https://rubygems.org/gems/google-cloud-logging
+    install: gem install google-cloud-logging
+    repo: https://github.com/googleapis/google-cloud-ruby
+    official: true
+    version: 2.7.0
+    published: '2026-04-15'
+  - language: php
+    registry: packagist
+    name: google/cloud-logging
+    url: https://packagist.org/packages/google/cloud-logging
+    install: composer require google/cloud-logging
+    repo: https://github.com/googleapis/google-cloud-php
+    official: true
+    version: v2.2.1
+    published: '2026-09-01'
+cli:
+  - name: gcloud
+    note: >-
+      The Cloud Logging command surface ships inside the Google Cloud CLI, not as a separate
+      package. See cli/google-cloud-logging-cli.yml.

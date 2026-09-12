@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Logging Bucket Exclusions API
   description: 'Google Cloud Logging API v2 writes log entries and manages Cloud Logging

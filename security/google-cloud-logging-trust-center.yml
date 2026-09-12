@@ -1,0 +1,33 @@
+generated: '2026-09-12'
+method: searched
+probe: true
+url: https://cloud.google.com/security/compliance
+offerings_url: https://cloud.google.com/security/compliance/offerings
+reports_manager: https://cloud.google.com/security/compliance/compliance-reports-manager
+note: >-
+  Google Cloud does not run a trust.<domain> style trust portal — the automated probe of
+  trust./security./compliance. subdomains found nothing, which is why the mechanical probe
+  recorded trust=none. The equivalent surface is the central Compliance Resource Center at
+  cloud.google.com/security/compliance plus the Compliance Reports Manager, where the audit
+  reports themselves are downloaded. Cloud Logging is in scope as a Google Cloud service; the
+  certifications are held at the platform level, not per-product.
+certifications:
+  - SOC 1
+  - SOC 2
+  - SOC 3
+  - ISO/IEC 27001
+  - ISO/IEC 27017
+  - ISO/IEC 27018
+  - ISO/IEC 27701
+  - ISO 22301
+  - PCI DSS
+  - HIPAA
+  - FedRAMP
+  - CSA STAR
+  - BSI C5
+  - IRAP
+evidence:
+  - source: https://cloud.google.com/security/compliance/offerings
+    http_status: 200
+    fetched: '2026-09-12'
+    keywords: [soc 1, soc 2, soc 3, iso 27001, iso 27017, iso 27018, iso 27701, pci dss, hipaa, fedramp, csa star, c5, irap]

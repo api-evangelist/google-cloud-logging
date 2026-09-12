@@ -4,148 +4,95 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Cloud Logging
 providerId: google-cloud-logging
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-12'
+generated: '2026-09-12'
+method: searched
+source: https://cloud.google.com/stackdriver/pricing
+note: >-
+  Replaces the 2026-05-04 bulk-sweep scaffold, which invented a tiered "Free / Pro" plan
+  structure with a 1,000-requests-per-month quota that Google has never published. Cloud
+  Logging has NO request-priced plan tiers: it is usage-priced by data volume, with one free
+  allotment per project per month. Every figure below is quoted from the provider's own
+  Observability pricing summary, read 2026-09-12.
 tags:
   - Cloud
   - Logging
   - Monitoring
   - Observability
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  Cloud Logging pricing. There are no subscription tiers and no per-call pricing — billing is
+  a one-time ingestion charge per GiB streamed into log bucket storage (which includes 30 days
+  of storage, querying and analysis at no extra charge), plus an optional per-GiB-per-month
+  charge for retention beyond 30 days. The Log Router and Log Analytics are free.
+pricing_model: usage-based
+billing_unit: GiB ingested
+plan_count: 1
 plans:
-  - id: google-cloud-logging-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Google Cloud Logging API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: google-cloud-logging-usage
+    name: Cloud Logging (usage-based)
+    type: usage-based
+    currency: USD
+    billing_period: month
+    description: >-
+      The only plan. Priced on data volume ingested into log bucket storage, with a free
+      allotment applied per Google Cloud project per month.
+    free_allotment:
+      amount: 50
+      unit: GiB
+      scope: per project per month
+      applies_to: Logging storage (except vended network logs)
+      effective_date: '2018-07-01'
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
+      - label: Logging storage
+        name: logging_storage
+        type: usage
+        metric: GiB ingested
+        price: '0.50'
+        currency: USD
+        unit: GiB
+        free_allotment: 50 GiB/project/month
+        effective_date: '2018-07-01'
+        description: >-
+          One-time charge for streaming logs into log bucket storage for indexing, querying and
+          analysis; includes up to 30 days of storage in log buckets. No additional charges for
+          querying and analyzing log data.
+      - label: Vended network logs storage
+        name: vended_network_logs_storage
+        type: usage
+        metric: GiB ingested
+        price: '0.25'
+        currency: USD
+        unit: GiB
+        free_allotment: null
+        effective_date: '2024-10-01'
+        description: >-
+          One-time charge for streaming network telemetry logs into log bucket storage;
+          includes up to 30 days of storage. No free allotment applies.
+      - label: Logging retention
+        name: logging_retention
+        type: usage
+        metric: GiB per month retained
+        price: '0.01'
+        currency: USD
+        unit: GiB/month
+        effective_date: '2022-01-01'
+        description: >-
+          Charged per GiB per month for logs retained more than 30 days, billed monthly
+          according to retention. Logs kept for the default retention period incur no retention
+          cost.
+      - label: Log Router
+        name: log_router
+        type: usage
         price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
+        description: No additional charge.
+      - label: Log Analytics
+        name: log_analytics
+        type: usage
         price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Google Cloud Logging API
-  - id: google-cloud-logging-pro
-    name: Professional
-    type: paid
-    description: Production tier for Google Cloud Logging. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://logging.googleapis.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Google Cloud Logging API
-  - id: google-cloud-logging-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Google Cloud Logging. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://logging.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Google Cloud Logging API
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+        description: No additional charge.
+trial:
+  program: Google Cloud Free Program
+  credit: USD 300 in free credits
+  url: https://cloud.google.com/free
+  note: Platform-wide trial credit, not a Cloud Logging-specific trial.
+quota_reference: rate-limits/google-cloud-logging-rate-limits.yml

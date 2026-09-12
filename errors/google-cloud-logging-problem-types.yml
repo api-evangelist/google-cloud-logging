@@ -1,0 +1,110 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://google.aip.dev/193 (Google's canonical API error contract, which
+  cloud.google.com/apis/design/errors now redirects to) cross-checked against the 4xx/5xx
+  responses in openapi/ and the quota limits at https://docs.cloud.google.com/logging/quotas
+format: google-rpc-status
+not_rfc9457: true
+envelope:
+  shape: '{"error": {"code": <http status>, "message": "<developer-facing text>", "status": "<google.rpc.Code enum name>", "details": [<google.protobuf.Any>]}}'
+  fields:
+    code: HTTP status code as an integer.
+    message: Developer-facing explanation. Not for end users and not stable enough to parse.
+    status: The google.rpc.Code enum name — this is the machine-readable code to branch on.
+    details: Array of typed detail messages.
+  detail_types:
+    - type: google.rpc.ErrorInfo
+      fields: [reason, domain, metadata]
+      note: >-
+        reason is UPPER_SNAKE_CASE (max 63 chars); domain is the service identifier, which for
+        this API is logging.googleapis.com. The (reason, domain) pair is stable for the same
+        error and is the correct key for programmatic handling.
+    - type: google.rpc.BadRequest
+      note: Field-level violations for INVALID_ARGUMENT.
+    - type: google.rpc.RetryInfo
+      note: Server-suggested retry delay; see AIP-194.
+problems:
+  - status: 400
+    code: INVALID_ARGUMENT
+    title: Malformed request
+    remediation: >-
+      Fix the request before retrying — a filter over 20,000 characters, a malformed
+      resourceNames entry, an unparseable timestamp or an invalid orderBy value will land here.
+      Retrying unchanged will not succeed.
+    retryable: false
+  - status: 401
+    code: UNAUTHENTICATED
+    title: Missing or invalid credentials
+    remediation: >-
+      Supply a valid OAuth 2.0 bearer token. Refresh the token and retry once.
+    retryable: false
+  - status: 403
+    code: PERMISSION_DENIED
+    title: Caller lacks permission
+    remediation: >-
+      The token authenticated but the principal lacks the IAM permission (for example
+      logging.logEntries.list or logging.buckets.get) on the target resource, or the OAuth
+      scope is too narrow. Grant the role or widen the scope; do not retry.
+    retryable: false
+  - status: 404
+    code: NOT_FOUND
+    title: Resource does not exist
+    remediation: >-
+      The named bucket, view, sink, exclusion or project could not be resolved. Check the full
+      resource name form (projects/PROJECT_ID/locations/LOCATION/buckets/BUCKET_ID).
+    retryable: false
+  - status: 409
+    code: ALREADY_EXISTS
+    title: Resource already exists
+    remediation: >-
+      A create with an id already in use. Because these creates carry no idempotency key, this
+      is also what a blind retry of a create that actually succeeded looks like — read the
+      resource before deciding it was a genuine collision.
+    retryable: false
+  - status: 429
+    code: RESOURCE_EXHAUSTED
+    title: Quota exceeded
+    remediation: >-
+      A published Cloud Logging quota was hit — most often entries.list at 60 requests per
+      minute per project (not raisable), control-plane requests at 600 per minute, or the
+      entries.write byte rate. Back off exponentially and retry; for write throughput, request
+      a quota increase.
+    retryable: true
+    quota_reference: https://docs.cloud.google.com/logging/quotas
+  - status: 499
+    code: CANCELLED
+    title: Request cancelled by the caller
+    retryable: false
+  - status: 500
+    code: INTERNAL
+    title: Internal server error
+    remediation: Retry with exponential backoff; escalate through support if it persists.
+    retryable: true
+  - status: 501
+    code: UNIMPLEMENTED
+    title: Method not implemented
+    retryable: false
+  - status: 503
+    code: UNAVAILABLE
+    title: Service unavailable
+    remediation: >-
+      Transient. Retry with exponential backoff and jitter. Honour google.rpc.RetryInfo when
+      present in details.
+    retryable: true
+  - status: 504
+    code: DEADLINE_EXCEEDED
+    title: Deadline exceeded
+    remediation: >-
+      Narrow the filter or time range on a list/tail request, then retry. A deadline on a write
+      is ambiguous — the entry may have landed; re-send with the same insertId so the duplicate
+      collapses on read.
+    retryable: true
+notes:
+  - >-
+    Cloud Logging does not serve application/problem+json and does not mint per-error type
+    URIs; branch on error.status (the google.rpc.Code name) and on
+    details[].reason + details[].domain, never on error.message text.
+  - >-
+    No X-RateLimit-* headers accompany a 429 on this API. Quota state is observed through
+    Cloud Monitoring metrics rather than response headers.

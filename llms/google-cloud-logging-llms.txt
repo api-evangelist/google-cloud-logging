@@ -1,0 +1,87 @@
+# Google Cloud Logging
+
+> Google Cloud Logging is a fully managed, real-time log management service for Google Cloud
+> and hybrid environments. It ingests, stores, searches, analyzes, routes and alerts on log
+> data and events at scale. The v2 API writes log entries and manages log buckets, views,
+> sinks, exclusions, logs-based metrics and CMEK settings. Google publishes a first-party
+> Discovery document (254 methods), first-party gRPC service definitions, seven official
+> client libraries, a gcloud command surface, and — since 2026-04-22 — a fully managed remote
+> MCP server at https://logging.googleapis.com/mcp.
+
+Generated 2026-09-12 by the API Evangelist enrichment pipeline from apis.yml and the artifacts
+in this repository. Every link below was fetched and returned HTTP 200 on that date unless
+noted.
+
+## Agent surfaces
+
+- [Remote MCP server](https://logging.googleapis.com/mcp): Fully managed, HTTP transport, OAuth 2.0 + IAM. Six tools, all read-only: list_log_entries, list_log_names, get_bucket, list_buckets, get_view, list_views. tools/list answers anonymously; invocation needs a logging scope.
+- [MCP setup guide](https://docs.cloud.google.com/logging/docs/use-logging-mcp): How to point an MCP client at the server.
+- [MCP tool reference](https://docs.cloud.google.com/logging/docs/reference/v2_mcp/mcp): Tool-to-REST-method mapping.
+- No A2A agent card is served on any host this record knows.
+
+## Machine-readable contracts
+
+- [Discovery document](https://logging.googleapis.com/$discovery/rest?version=v2): logging:v2, revision 20260818, 94 schemas, 254 methods. This is the authoritative REST contract.
+- [gRPC service definitions](https://github.com/googleapis/googleapis/tree/master/google/logging/v2): LoggingServiceV2, ConfigServiceV2, MetricsServiceV2.
+- [REST reference](https://docs.cloud.google.com/logging/docs/reference/v2/rest): Per-method documentation.
+- [gRPC reference](https://docs.cloud.google.com/logging/docs/reference/v2/rpc)
+
+## Base URLs
+
+- `https://logging.googleapis.com` — global endpoint
+- `https://logging.mtls.googleapis.com` — mTLS endpoint
+- `https://logging.<region>.rep.googleapis.com` — 40 regional endpoints, enumerated in the Discovery document
+
+## APIs
+
+- [Write log entries](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/entries/write): POST /v2/entries:write
+- [List log entries](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list): POST /v2/entries:list
+- [Tail log entries](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/entries/tail): streaming
+- [Copy log entries](https://docs.cloud.google.com/logging/docs/export/copy): long-running operation
+- [Log buckets](https://docs.cloud.google.com/logging/docs/buckets), views, sinks, exclusions and logs-based metrics
+
+## Authentication
+
+- [Access control](https://docs.cloud.google.com/logging/docs/access-control): OAuth 2.0 bearer token plus Google Cloud IAM.
+- Scopes: `logging.read`, `logging.write`, `logging.admin`, `cloud-platform`, `cloud-platform.read-only`
+- [OIDC discovery](https://accounts.google.com/.well-known/openid-configuration) and [authorization server metadata](https://accounts.google.com/.well-known/oauth-authorization-server) are both served.
+
+## Conventions an agent needs
+
+- Pagination is cursor-based: `pageSize` / `pageToken` in, `nextPageToken` out. A non-empty `nextPageToken` with an EMPTY `entries` array does not mean the end — keep following it.
+- Errors use the Google `google.rpc.Status` envelope (`error.code`, `error.message`, `error.status`, `error.details`), NOT RFC 9457. Branch on `error.status` and on `details[].reason` + `details[].domain` (`logging.googleapis.com`), never on message text.
+- There is no `Idempotency-Key`. The only replay handling is `LogEntry.insertId`, and it de-duplicates at READ time with no guarantee for exported logs.
+- There are no rate-limit response headers. Throttling shows up only as HTTP 429 / `RESOURCE_EXHAUSTED`.
+- `entries.list` is capped at 60 requests per minute per project and that cap cannot be raised — it is the binding constraint on agent query workloads.
+- Deleting a log bucket is reversible for 7 days via `buckets.undelete`. Deleting a sink, an entry or a log name is NOT reversible.
+
+## Limits and pricing
+
+- [Quotas and limits](https://docs.cloud.google.com/logging/quotas): entries.write 4.8 GB/min in primary regions (300 MB/min elsewhere), entries.list 60/min, control plane 600/min, LogEntry 256 KiB, entries.write request 10 MB, filter 20,000 characters.
+- [Pricing](https://cloud.google.com/stackdriver/pricing): USD 0.50/GiB ingested (first 50 GiB per project per month free, includes 30 days of storage), USD 0.25/GiB for vended network logs, USD 0.01/GiB/month beyond 30 days. Log Router and Log Analytics are free.
+
+## Client libraries
+
+- [Node.js `@google-cloud/logging` 12.0.1](https://www.npmjs.com/package/@google-cloud/logging)
+- [Python `google-cloud-logging` 3.16.3](https://pypi.org/project/google-cloud-logging/)
+- [Java `com.google.cloud:google-cloud-logging` 3.34.0](https://central.sonatype.com/artifact/com.google.cloud/google-cloud-logging)
+- [Go `cloud.google.com/go/logging` v1.19.1](https://pkg.go.dev/cloud.google.com/go/logging)
+- [.NET `Google.Cloud.Logging.V2` 4.5.0](https://www.nuget.org/packages/Google.Cloud.Logging.V2)
+- [Ruby `google-cloud-logging` 2.7.0](https://rubygems.org/gems/google-cloud-logging)
+- [PHP `google/cloud-logging` v2.2.1](https://packagist.org/packages/google/cloud-logging)
+- [Client libraries guide](https://docs.cloud.google.com/logging/docs/reference/libraries)
+- CLI: `gcloud logging` — see [reference](https://docs.cloud.google.com/sdk/gcloud/reference/logging)
+
+## Docs
+
+- [Documentation](https://cloud.google.com/logging/docs)
+- [Getting started with gcloud](https://docs.cloud.google.com/logging/docs/write-query-log-entries-gcloud)
+- [Logging query language](https://docs.cloud.google.com/logging/docs/view/logging-query-language)
+- [Structured logging](https://cloud.google.com/logging/docs/structured-logging)
+- [Samples](https://cloud.google.com/logging/docs/samples)
+- [Troubleshooting](https://cloud.google.com/logging/docs/troubleshooting)
+- [Release notes](https://cloud.google.com/logging/docs/release-notes)
+- [Status](https://status.cloud.google.com/)
+- [Deprecation policy](https://cloud.google.com/terms/deprecation) — 12 months' notice for GA services
+- [Security and compliance](https://cloud.google.com/security/compliance)
+- [security.txt](https://www.google.com/.well-known/security.txt) — VRP at https://g.co/vrp

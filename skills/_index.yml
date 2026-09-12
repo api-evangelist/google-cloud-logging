@@ -1,0 +1,18 @@
+generated: '2026-09-12'
+method: generated
+source: >-
+  Authored from the operationIds present in openapi/, the live MCP tools/list probe, and the
+  conventions, errors, data-model and rate-limits artifacts in this repository.
+skills:
+  - file: google-cloud-logging-write-and-query-logs.md
+    name: Write and query Cloud Logging entries
+    api: openapi/google-cloud-logging-entries-write-api-openapi.yml
+    operations: [writeLogEntries, listLogEntries]
+  - file: google-cloud-logging-route-logs-with-a-sink.md
+    name: Route logs to a destination with a Log Router sink
+    api: openapi/google-cloud-logging-sinks-api-openapi.yml
+    operations: [createSink, listSinks]
+  - file: google-cloud-logging-query-logs-with-mcp.md
+    name: Query Cloud Logging from an agent over MCP
+    api: mcp/google-cloud-logging-mcp.yml
+    operations: [list_log_entries, list_log_names, list_buckets, get_bucket, list_views, get_view]

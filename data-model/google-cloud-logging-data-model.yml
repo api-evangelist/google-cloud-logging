@@ -1,0 +1,123 @@
+generated: '2026-09-12'
+method: derived
+source: >-
+  discovery/google-cloud-logging-discovery-v2.json (revision 20260818, 94 schemas) and
+  grpc/google-cloud-logging-logging-config.proto, cross-checked against the REST reference at
+  https://docs.cloud.google.com/logging/docs/reference/v2/rest
+description: >-
+  The entity graph of Cloud Logging v2. Two halves: the telemetry plane (a LogEntry written
+  into a log name and stored in a bucket) and the configuration plane (buckets, views, sinks,
+  exclusions, metrics and links, all owned by a resource container).
+resource_name_scheme:
+  form: "{container}/{containerId}[/locations/{location}]/{collection}/{id}"
+  containers: [projects, folders, organizations, billingAccounts]
+  examples:
+    - projects/PROJECT_ID/logs/LOG_ID
+    - projects/PROJECT_ID/locations/LOCATION/buckets/BUCKET_ID
+    - projects/PROJECT_ID/locations/LOCATION/buckets/BUCKET_ID/views/VIEW_ID
+    - projects/PROJECT_ID/sinks/SINK_ID
+  note: >-
+    There is no opaque id-prefix scheme (no cus_/inv_ style ids). Identity is the full
+    hierarchical resource name, and every management method addresses resources by it.
+entities:
+  - name: LogEntry
+    plane: telemetry
+    key_fields: [logName, timestamp, insertId, resource, severity, trace, spanId]
+    payload_oneof: [textPayload, jsonPayload, protoPayload]
+    note: >-
+      The unit of ingestion. logName is a full resource name; resource is a
+      MonitoredResource; insertId is the client-supplied de-duplication key.
+  - name: MonitoredResource
+    plane: telemetry
+    key_fields: [type, labels]
+  - name: MonitoredResourceDescriptor
+    plane: telemetry
+    key_fields: [type, labels, displayName]
+  - name: LogBucket
+    plane: configuration
+    key_fields: [name, retentionDays, locked, lifecycleState, cmekSettings, indexConfigs, analyticsEnabled]
+  - name: LogView
+    plane: configuration
+    key_fields: [name, filter]
+  - name: LogSink
+    plane: configuration
+    key_fields: [name, destination, filter, writerIdentity, disabled, includeChildren, exclusions]
+  - name: LogExclusion
+    plane: configuration
+    key_fields: [name, filter, disabled]
+  - name: LogMetric
+    plane: configuration
+    key_fields: [name, filter, metricDescriptor, valueExtractor, labelExtractors, bucketName]
+  - name: Link
+    plane: configuration
+    key_fields: [name, bigqueryDataset]
+    note: A linked BigQuery dataset over an analytics-enabled bucket.
+  - name: CmekSettings
+    plane: configuration
+    key_fields: [kmsKeyName, serviceAccountId]
+  - name: Settings
+    plane: configuration
+    key_fields: [kmsKeyName, storageLocation, disableDefaultSink]
+  - name: Operation
+    plane: control
+    key_fields: [name, metadata, done, error, response]
+relationships:
+  - from: LogEntry
+    to: MonitoredResource
+    kind: has_one
+    via: resource
+  - from: LogEntry
+    to: LogBucket
+    kind: belongs_to
+    via: logName routed by the Log Router into a bucket
+    note: Indirect — the Log Router decides the destination bucket; LogEntry carries no bucket field.
+  - from: LogEntry
+    to: Trace span
+    kind: has_one
+    via: trace + spanId
+  - from: LogBucket
+    to: LogView
+    kind: has_many
+    via: parent resource name
+  - from: LogBucket
+    to: CmekSettings
+    kind: has_one
+    via: cmekSettings
+  - from: LogBucket
+    to: Link
+    kind: has_many
+    via: parent resource name
+  - from: LogSink
+    to: LogBucket
+    kind: has_one
+    via: destination (logging.googleapis.com/projects/.../buckets/...)
+    note: >-
+      destination is polymorphic — it may instead name a Cloud Storage bucket, a BigQuery
+      dataset, a Pub/Sub topic or another project's log bucket.
+  - from: LogSink
+    to: LogExclusion
+    kind: has_many
+    via: exclusions
+  - from: LogSink
+    to: writerIdentity
+    kind: has_one
+    via: writerIdentity
+    note: >-
+      A service account Google mints for the sink; it must be granted write access on the
+      destination before routing works. This is the single most common sink misconfiguration.
+  - from: LogMetric
+    to: LogBucket
+    kind: belongs_to
+    via: bucketName
+  - from: LogMetric
+    to: MetricDescriptor
+    kind: has_one
+    via: metricDescriptor
+  - from: Container (project/folder/organization/billingAccount)
+    to: [LogBucket, LogSink, LogExclusion, LogMetric, Settings]
+    kind: has_many
+    via: resource-name parent
+  - from: copyLogEntries
+    to: Operation
+    kind: has_one
+    via: long-running operation name

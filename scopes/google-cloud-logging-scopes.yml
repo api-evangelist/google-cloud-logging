@@ -1,35 +1,54 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-cloud-logging-openapi.yml
+generated: '2026-09-12'
+method: searched
+source: discovery/google-cloud-logging-discovery-v2.json
+docs: https://docs.cloud.google.com/logging/docs/access-control
+note: >-
+  Upgraded from the 2026-07-11 derived pass, which read the four scopes in the local OpenAPI
+  and used short names. The names below are the full scope URIs exactly as Google publishes
+  them in the Discovery document's auth.oauth2.scopes block (revision 20260818), with Google's
+  own descriptions verbatim. cloud-platform.read-only was missing from the derived file.
 schemes:
-- name: OAuth2
-  source: openapi/google-cloud-logging-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
+  - name: OAuth2
+    source: discovery/google-cloud-logging-discovery-v2.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
 scopes:
-- scope: cloud-platform
-  description: View and manage your data across Google Cloud Platform services
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-cloud-logging-openapi.yml
-- scope: logging.admin
-  description: Administrate logs
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-cloud-logging-openapi.yml
-- scope: logging.read
-  description: View logs
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-cloud-logging-openapi.yml
-- scope: logging.write
-  description: Submit log data
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-cloud-logging-openapi.yml
+  - scope: https://www.googleapis.com/auth/logging.read
+    short: logging.read
+    description: View log data for your projects
+    flows: [authorizationCode]
+    sources: [discovery/google-cloud-logging-discovery-v2.json, openapi/google-cloud-logging-openapi.yml]
+  - scope: https://www.googleapis.com/auth/logging.write
+    short: logging.write
+    description: Submit log data for your projects
+    flows: [authorizationCode]
+    sources: [discovery/google-cloud-logging-discovery-v2.json, openapi/google-cloud-logging-openapi.yml]
+  - scope: https://www.googleapis.com/auth/logging.admin
+    short: logging.admin
+    description: Administrate log data for your projects
+    flows: [authorizationCode]
+    sources: [discovery/google-cloud-logging-discovery-v2.json, openapi/google-cloud-logging-openapi.yml]
+  - scope: https://www.googleapis.com/auth/cloud-platform
+    short: cloud-platform
+    description: >-
+      See, edit, configure, and delete your Google Cloud data and see the email address for
+      your Google Account.
+    flows: [authorizationCode]
+    sources: [discovery/google-cloud-logging-discovery-v2.json, openapi/google-cloud-logging-openapi.yml]
+  - scope: https://www.googleapis.com/auth/cloud-platform.read-only
+    short: cloud-platform.read-only
+    description: >-
+      View your data across Google Cloud services and see the email address of your Google
+      Account
+    flows: [authorizationCode]
+    sources: [discovery/google-cloud-logging-discovery-v2.json]
+mcp_scopes:
+  note: >-
+    The Cloud Logging remote MCP server accepts the same scopes; its setup page names
+    logging.admin and logging.write specifically, alongside the roles/mcp.toolUser IAM role.
+  url: https://docs.cloud.google.com/logging/docs/use-logging-mcp
+authorization_note: >-
+  A scope is necessary but not sufficient — Google Cloud IAM roles decide the actual
+  permission. See authentication/google-cloud-logging-authentication.yml.

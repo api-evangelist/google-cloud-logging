@@ -1,0 +1,50 @@
+generated: '2026-09-12'
+method: searched
+source: https://docs.cloud.google.com/logging/docs/release-notes
+scheme: dated
+note: >-
+  Cloud Logging publishes a dated release-notes feed rather than a semantic-version changelog.
+  The API surface itself is pinned at v2; entries below are the recent window read on
+  2026-09-12, not the full history.
+current_version: v2
+api_revision: '20260818'
+api_revision_source: discovery/google-cloud-logging-discovery-v2.json
+entries:
+  - date: '2026-08-26'
+    kind: change
+    breaking: false
+    highlight: VM Extension Manager extension policies for the Ops Agent are generally available.
+  - date: '2026-08-14'
+    kind: announcement
+    breaking: false
+    highlight: >-
+      The Telemetry API for logs ingestion is generally available — OTLP logs can be ingested
+      via the OpenTelemetry Collector.
+  - date: '2026-06-22'
+    kind: security
+    breaking: false
+    highlight: >-
+      Log sinks stop routing entries to a Cloud Storage bucket whose parent project changes;
+      error handling and recovery documented.
+  - date: '2026-06-18'
+    kind: change
+    breaking: false
+    highlight: The Cloud Logging API adds support for the `ca` regional endpoint.
+  - date: '2026-05-28'
+    kind: announcement
+    breaking: false
+    highlight: Regional endpoints for the Cloud Logging API are now listed in the REST reference pages.
+  - date: '2026-05-15'
+    kind: feature
+    breaking: false
+    highlight: >-
+      Ops Agent 2.66.0 can export logs and metrics through the OpenTelemetry-based Telemetry
+      API as an optional alternative.
+  - date: '2026-04-22'
+    kind: feature
+    breaking: false
+    highlight: The Cloud Logging API MCP server is generally available.
+  - date: '2026-04-20'
+    kind: libraries
+    breaking: false
+    highlight: Go client library logging/v1.16.0 released (2026-04-13).
