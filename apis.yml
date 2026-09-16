@@ -1,15 +1,13 @@
 aid: google-cloud-logging
 name: Google Cloud Logging
-description: >-
-  Google Cloud Logging is a fully managed, real-time log management service that ingests,
-  stores, searches, analyzes, routes and alerts on application and system log data at scale
-  across Google Cloud, AWS and on-premises environments. The v2 API writes log entries and
-  manages the configuration surface behind them — log buckets and views, Log Router sinks and
-  exclusions, logs-based metrics, log scopes, linked BigQuery datasets and CMEK settings.
-  Google publishes it as a Discovery document with 254 methods, as first-party gRPC service
-  definitions, through seven official client libraries and the gcloud logging command group,
-  and — since April 2026 — through a fully managed remote MCP server at
-  logging.googleapis.com/mcp that exposes six read-only tools to agents.
+description: Google Cloud Logging is a fully managed, real-time log management service that ingests, stores,
+  searches, analyzes, routes and alerts on application and system log data at scale across Google Cloud,
+  AWS and on-premises environments. The v2 API writes log entries and manages the configuration surface
+  behind them — log buckets and views, Log Router sinks and exclusions, logs-based metrics, log scopes,
+  linked BigQuery datasets and CMEK settings. Google publishes it as a Discovery document with 254 methods,
+  as first-party gRPC service definitions, through seven official client libraries and the gcloud logging
+  command group, and — since April 2026 — through a fully managed remote MCP server at logging.googleapis.com/mcp
+  that exposes six read-only tools to agents.
 deliveryModel:
   model: saas
   open_source: false
@@ -38,20 +36,20 @@ accessModel:
 image: ''
 type: Index
 created: '2024-01-01'
-modified: '2026-09-12'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging.yml
 tags:
-  - Cloud
-  - Logging
-  - Monitoring
-  - Observability
-  - Telemetry
-  - Log Management
-  - SRE
-  - DevOps
-  - OpenTelemetry
-  - Google Cloud
+- Cloud
+- Logging
+- Monitoring
+- Observability
+- Telemetry
+- Log Management
+- SRE
+- DevOps
+- OpenTelemetry
+- Google Cloud
 apis:
 - aid: google-cloud-logging:google-cloud-logging-bucket-api
   name: Google Cloud Logging Bucket API
@@ -418,10 +416,9 @@ apis:
   - type: Node.js SDK
     url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 - aid: google-cloud-logging:google-cloud-logging-google-cloud-logging-api-api
-  name: Google Cloud Logging Google Cloud Logging API API
-  description: >-
-    The Google Cloud Logging API API from Google Cloud Logging — 1 operation(s) for google cloud logging
-    api.
+  name: Google Cloud Logging Google Cloud Logging API
+  description: The Google Cloud Logging API API from Google Cloud Logging — 1 operation(s) for google
+    cloud logging api.
   humanURL: https://cloud.google.com/logging
   baseURL: https://logging.googleapis.com
   tags:
@@ -524,132 +521,131 @@ apis:
   - type: Node.js SDK
     url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
-  - type: AgenticAccess
-    url: agentic-access/google-cloud-logging-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/google-cloud-logging-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/google-cloud-logging-domain-security.yml
-  - type: Authentication
-    url: authentication/google-cloud-logging-authentication.yml
-  - type: OAuthScopes
-    url: scopes/google-cloud-logging-scopes.yml
-  - type: Portal
-    url: https://console.cloud.google.com
-  - type: GettingStarted
-    url: https://cloud.google.com/logging/docs/quickstart
-  - type: Authentication
-    url: https://cloud.google.com/docs/authentication
-  - type: Support
-    url: https://cloud.google.com/support
-  - type: Blog
-    url: https://cloud.google.com/blog/products/operations
-  - type: ChangeLog
-    url: https://cloud.google.com/logging/docs/release-notes
-  - type: PrivacyPolicy
-    url: https://policies.google.com/privacy
-  - type: Documentation
-    url: https://cloud.google.com/logging/docs
-  - type: RateLimits
-    url: https://cloud.google.com/logging/quotas
-  - type: TermsOfService
-    url: https://cloud.google.com/terms
-  - type: StatusPage
-    url: https://status.cloud.google.com/
-  - type: Console
-    url: https://console.cloud.google.com/logs
-  - type: Website
-    url: https://cloud.google.com
-  - type: Login
-    url: https://console.cloud.google.com/
-  - type: Signup
-    url: https://console.cloud.google.com/freetrial
-  - type: SDKs
-    url: https://cloud.google.com/logging/docs/reference/libraries
-  - type: Pricing
-    url: https://cloud.google.com/stackdriver/pricing
-  - type: GitHubOrganization
-    url: https://github.com/googleapis
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/google-cloud-logging
-  - type: Issue Tracker
-    url: https://cloud.google.com/support/docs/issue-trackers
-  - type: Security
-    url: https://g.co/vrp
-  - type: Integrations
-    url: https://cloud.google.com/marketplace
-  - type: Discovery
-    url: discovery/google-cloud-logging-discovery-v2.json
-  - type: Protobuf
-    name: LoggingServiceV2
-    url: grpc/google-cloud-logging-logging.proto
-  - type: Protobuf
-    name: ConfigServiceV2
-    url: grpc/google-cloud-logging-logging-config.proto
-  - type: Protobuf
-    name: MetricsServiceV2
-    url: grpc/google-cloud-logging-logging-metrics.proto
-  - type: Protobuf
-    name: LogEntry
-    url: grpc/google-cloud-logging-log-entry.proto
-  - type: MCPServer
-    url: mcp/google-cloud-logging-mcp.yml
-  - type: ToolCrosswalk
-    url: mcp/google-cloud-logging-tool-crosswalk.yml
-  - type: Packages
-    url: packages/google-cloud-logging-packages.yml
-  - type: SDKs
-    url: packages/google-cloud-logging-packages.yml
-  - type: CLI
-    url: cli/google-cloud-logging-cli.yml
-  - type: WellKnown
-    url: well-known/google-cloud-logging-well-known.yml
-  - type: SecurityTxt
-    url: well-known/google-cloud-logging-security.txt
-  - type: LLMsTxt
-    url: llms/google-cloud-logging-llms.txt
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: Conventions
-    url: conventions/google-cloud-logging-conventions.yml
-  - type: Idempotency
-    url: conventions/google-cloud-logging-conventions.yml
-  - type: ErrorCatalog
-    url: errors/google-cloud-logging-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/google-cloud-logging-lifecycle.yml
-  - type: Deprecation
-    url: https://cloud.google.com/terms/deprecation
-  - type: Conformance
-    url: conformance/google-cloud-logging-conformance.yml
-  - type: Compliance
-    url: https://cloud.google.com/security/compliance
-  - type: TrustCenter
-    url: security/google-cloud-logging-trust-center.yml
-  - type: DataModel
-    url: data-model/google-cloud-logging-data-model.yml
-  - type: Sandbox
-    url: sandbox/google-cloud-logging-sandbox.yml
-  - type: ChangeLog
-    url: changelog/google-cloud-logging-changelog.yml
-  - type: RateLimits
-    url: rate-limits/google-cloud-logging-rate-limits.yml
-  - type: Plans
-    url: plans/google-cloud-logging-plans-pricing.yml
-  - type: FinOps
-    url: finops/google-cloud-logging-finops.yml
+- type: AgenticAccess
+  url: agentic-access/google-cloud-logging-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-cloud-logging-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-cloud-logging-domain-security.yml
+- type: Authentication
+  url: authentication/google-cloud-logging-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-cloud-logging-scopes.yml
+- type: Portal
+  url: https://console.cloud.google.com
+- type: GettingStarted
+  url: https://cloud.google.com/logging/docs/quickstart
+- type: Authentication
+  url: https://cloud.google.com/docs/authentication
+- type: Support
+  url: https://cloud.google.com/support
+- type: Blog
+  url: https://cloud.google.com/blog/products/operations
+- type: ChangeLog
+  url: https://cloud.google.com/logging/docs/release-notes
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+- type: Documentation
+  url: https://cloud.google.com/logging/docs
+- type: RateLimits
+  url: https://cloud.google.com/logging/quotas
+- type: TermsOfService
+  url: https://cloud.google.com/terms
+- type: StatusPage
+  url: https://status.cloud.google.com/
+- type: Console
+  url: https://console.cloud.google.com/logs
+- type: Website
+  url: https://cloud.google.com
+- type: Login
+  url: https://console.cloud.google.com/
+- type: Signup
+  url: https://console.cloud.google.com/freetrial
+- type: SDKs
+  url: https://cloud.google.com/logging/docs/reference/libraries
+- type: Pricing
+  url: https://cloud.google.com/stackdriver/pricing
+- type: GitHubOrganization
+  url: https://github.com/googleapis
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/google-cloud-logging
+- type: Issue Tracker
+  url: https://cloud.google.com/support/docs/issue-trackers
+- type: Security
+  url: https://g.co/vrp
+- type: Integrations
+  url: https://cloud.google.com/marketplace
+- type: Discovery
+  url: discovery/google-cloud-logging-discovery-v2.json
+- type: Protobuf
+  name: LoggingServiceV2
+  url: grpc/google-cloud-logging-logging.proto
+- type: Protobuf
+  name: ConfigServiceV2
+  url: grpc/google-cloud-logging-logging-config.proto
+- type: Protobuf
+  name: MetricsServiceV2
+  url: grpc/google-cloud-logging-logging-metrics.proto
+- type: Protobuf
+  name: LogEntry
+  url: grpc/google-cloud-logging-log-entry.proto
+- type: MCPServer
+  url: mcp/google-cloud-logging-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/google-cloud-logging-tool-crosswalk.yml
+- type: Packages
+  url: packages/google-cloud-logging-packages.yml
+- type: SDKs
+  url: packages/google-cloud-logging-packages.yml
+- type: CLI
+  url: cli/google-cloud-logging-cli.yml
+- type: WellKnown
+  url: well-known/google-cloud-logging-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-cloud-logging-security.txt
+- type: LLMsTxt
+  url: llms/google-cloud-logging-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Conventions
+  url: conventions/google-cloud-logging-conventions.yml
+- type: Idempotency
+  url: conventions/google-cloud-logging-conventions.yml
+- type: ErrorCatalog
+  url: errors/google-cloud-logging-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-cloud-logging-lifecycle.yml
+- type: Deprecation
+  url: https://cloud.google.com/terms/deprecation
+- type: Conformance
+  url: conformance/google-cloud-logging-conformance.yml
+- type: Compliance
+  url: https://cloud.google.com/security/compliance
+- type: TrustCenter
+  url: security/google-cloud-logging-trust-center.yml
+- type: DataModel
+  url: data-model/google-cloud-logging-data-model.yml
+- type: Sandbox
+  url: sandbox/google-cloud-logging-sandbox.yml
+- type: ChangeLog
+  url: changelog/google-cloud-logging-changelog.yml
+- type: RateLimits
+  url: rate-limits/google-cloud-logging-rate-limits.yml
+- type: Plans
+  url: plans/google-cloud-logging-plans-pricing.yml
+- type: FinOps
+  url: finops/google-cloud-logging-finops.yml
 integrations:
-  - name: Become a Partner
+- name: Become a Partner
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
 overlays:
-  - type: APIs.io Search
-    url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-search.yml
-  - type: API Evangelist Ratings
-    url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-ratings.yml
-
+- type: APIs.io Search
+  url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-search.yml
+- type: API Evangelist Ratings
+  url: https://raw.githubusercontent.com/apis-json/artisanal/main/apis/google/google-cloud-logging-openapi-ratings.yml
 x-enrichment:
   date: '2026-09-12'
   status: enriched
