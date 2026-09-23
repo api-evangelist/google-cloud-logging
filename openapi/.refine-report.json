@@ -1,15 +1,7 @@
 {
   "provider": "google-cloud-logging",
   "sources": [
-    "google-cloud-logging-bucket-api-openapi.yml",
-    "google-cloud-logging-buckets-api-openapi.yml",
-    "google-cloud-logging-entries-copy-api-openapi.yml",
-    "google-cloud-logging-entries-list-api-openapi.yml",
-    "google-cloud-logging-entries-tail-api-openapi.yml",
-    "google-cloud-logging-entries-write-api-openapi.yml",
-    "google-cloud-logging-exclusions-api-openapi.yml",
-    "google-cloud-logging-google-cloud-logging-api-api-openapi.yml",
-    "google-cloud-logging-sinks-api-openapi.yml"
+    "_original/google-cloud-logging-openapi.yml"
   ],
   "outputs": [
     "google-cloud-logging-bucket-api-openapi.yml",
@@ -26,16 +18,43 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-cloud-logging-bucket-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-buckets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-entries-copy-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-entries-list-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-entries-tail-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-entries-write-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-exclusions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-google-cloud-logging-api-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-logging-sinks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "google-cloud-logging-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/entries:write -> Entries:write",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/entries:list -> Entries:list",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/entries:tail -> Entries:tail",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/entries:copy -> Entries:copy",
+    "google-cloud-logging-openapi.yml: tagged paths GET /v2/{parent}/buckets -> Buckets",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/{parent}/buckets -> Buckets",
+    "google-cloud-logging-openapi.yml: tagged paths GET /v2/{name}/bucket -> Bucket",
+    "google-cloud-logging-openapi.yml: tagged paths PATCH /v2/{name}/bucket -> Bucket",
+    "google-cloud-logging-openapi.yml: tagged paths DELETE /v2/{name}/bucket -> Bucket",
+    "google-cloud-logging-openapi.yml: tagged paths GET /v2/{parent}/sinks -> Sinks",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/{parent}/sinks -> Sinks",
+    "google-cloud-logging-openapi.yml: tagged paths GET /v2/{sinkName} -> Google Cloud Logging API",
+    "google-cloud-logging-openapi.yml: tagged paths DELETE /v2/{sinkName} -> Google Cloud Logging API",
+    "google-cloud-logging-openapi.yml: tagged paths GET /v2/{parent}/exclusions -> Exclusions",
+    "google-cloud-logging-openapi.yml: tagged paths POST /v2/{parent}/exclusions -> Exclusions",
+    "google-cloud-logging-openapi.yml: declared missing tag: Bucket",
+    "google-cloud-logging-openapi.yml: declared missing tag: Buckets",
+    "google-cloud-logging-openapi.yml: declared missing tag: Entries:copy",
+    "google-cloud-logging-openapi.yml: declared missing tag: Entries:list",
+    "google-cloud-logging-openapi.yml: declared missing tag: Entries:tail",
+    "google-cloud-logging-openapi.yml: declared missing tag: Entries:write",
+    "google-cloud-logging-openapi.yml: declared missing tag: Exclusions",
+    "google-cloud-logging-openapi.yml: declared missing tag: Google Cloud Logging API",
+    "google-cloud-logging-openapi.yml: declared missing tag: Sinks",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "google-cloud-logging-bucket-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-buckets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-entries-copy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-entries-list-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-entries-tail-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-entries-write-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-exclusions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-google-cloud-logging-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-logging-sinks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -5,9 +5,7 @@ info:
 
     configuration including buckets, sinks, exclusions, log-based metrics,
 
-    monitored resource descriptors, and CMEK settings.
-
-    '
+    monitored resource descriptors, and CMEK settings.'
   version: v2
 servers:
 - url: https://logging.googleapis.com
