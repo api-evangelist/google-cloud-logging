@@ -521,6 +521,9 @@ apis:
   - type: Node.js SDK
     url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
+- type: CapabilityMap
+  url: capabilities/google-cloud-logging-capability-edges.yml
+  name: Google Cloud Logging Business Capability Map
 - type: AgenticAccess
   url: agentic-access/google-cloud-logging-agentic-access.yml
 - type: VulnerabilityDisclosure
