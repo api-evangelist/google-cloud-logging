@@ -96,3 +96,18 @@ trial:
   url: https://cloud.google.com/free
   note: Platform-wide trial credit, not a Cloud Logging-specific trial.
 quota_reference: rate-limits/google-cloud-logging-rate-limits.yml
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units:
+  - data
+  plans:
+  - name: Cloud Logging (usage-based)
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods: []
