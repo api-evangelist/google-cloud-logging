@@ -46,8 +46,11 @@ x-evidence:
   raw_file: mcp/google-cloud-logging-mcp-tools-list.json
 tools:
 - name: list_log_entries
-  description: Use this as the primary tool to search and retrieve log entries from Google Cloud Logging.
-    It's essential for debugging application behavior, finding specific error messages, or auditing events.
+  description: 'Use this as the primary tool to search and retrieve log entries from Google Cloud Logging.
+    It''s essential for debugging application behavior, finding specific error messages, or auditing events.
+    The ''filter'' is powerful and can be used to select logs by severity, resource type, text content,
+    and more. IMPORTANT: This tool will only work with a single resource project at a time. Calls with
+    multiple resource projects will fail.'
   input_schema_properties:
   - filter
   - orderBy
@@ -63,7 +66,8 @@ tools:
   rest_method: logging.entries.list
   source_operation: openapi/google-cloud-logging-entries-list-api-openapi.yml#listLogEntries
 - name: list_log_names
-  description: Use this as the primary tool to list the log names in a Google Cloud project.
+  description: Use this as the primary tool to list the log names in a Google Cloud project. This is useful
+    for discovering what logs are available for a project. Only logs which have log entries will be listed.
   input_schema_properties:
   - pageSize
   - pageToken
@@ -77,7 +81,8 @@ tools:
   rest_method: logging.projects.logs.list
   source_operation: null
 - name: get_bucket
-  description: Use this as the primary tool to get a specific log bucket by name.
+  description: Use this as the primary tool to get a specific log bucket by name. Log buckets are containers
+    that store and organize your log data.
   input_schema_properties:
   - name
   annotations:
@@ -88,7 +93,9 @@ tools:
   rest_method: logging.projects.locations.buckets.get
   source_operation: openapi/google-cloud-logging-bucket-api-openapi.yml#getBucket
 - name: list_buckets
-  description: Use this as the primary tool to list the log buckets in a Google Cloud project.
+  description: Use this as the primary tool to list the log buckets in a Google Cloud project. Log buckets
+    are containers that store and organize your log data. This tool is useful for understanding how your
+    logs are stored and for managing your logging configurations.
   input_schema_properties:
   - pageSize
   - pageToken
@@ -101,7 +108,8 @@ tools:
   rest_method: logging.projects.locations.buckets.list
   source_operation: openapi/google-cloud-logging-buckets-api-openapi.yml#listBuckets
 - name: get_view
-  description: Use this as the primary tool to get a specific view on a log bucket.
+  description: Use this as the primary tool to get a specific view on a log bucket. Log views provide
+    fine-grained access control to the logs in your buckets.
   input_schema_properties:
   - name
   annotations:
@@ -112,7 +120,9 @@ tools:
   rest_method: logging.projects.locations.buckets.views.get
   source_operation: null
 - name: list_views
-  description: Use this as the primary tool to list the log views in a given log bucket.
+  description: Use this as the primary tool to list the log views in a given log bucket. Log views provide
+    fine-grained access control to the logs in your buckets. This is useful for managing who has access
+    to which logs.
   input_schema_properties:
   - pageSize
   - pageToken
@@ -160,3 +170,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 6
