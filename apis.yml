@@ -521,6 +521,8 @@ apis:
   - type: Node.js SDK
     url: https://cloud.google.com/nodejs/docs/reference/logging/latest/overview
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-cloud-logging/overview
 - type: CapabilityMap
   url: capabilities/google-cloud-logging-capability-edges.yml
   name: Google Cloud Logging Business Capability Map
