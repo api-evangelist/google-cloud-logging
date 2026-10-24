@@ -1,199 +1,192 @@
 {
+  "info": {
+    "_postman_id": "1224f95d-62dc-4b1e-ae7f-0f9ec5cef580",
+    "name": "Google Cloud Logging API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:07:23.000Z",
+    "updatedAt": "2026-10-21T20:07:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1224f95d-62dc-4b1e-ae7f-0f9ec5cef580"
+  },
   "item": [
     {
-      "id": "d7309228-8226-403b-84cd-de4246a256f7",
-      "name": "Google Cloud Logging API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "c1d2fb89-4c73-457a-b062-bd8eae5c0ac0",
-          "name": "Get sink",
-          "request": {
-            "name": "Get sink",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":sinkName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "sinkName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{sinkName}",
+          "item": [
             {
-              "id": "4b9e55d3-4de2-4636-b5fb-ee7e27beb8de",
-              "name": "Sink",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":sinkName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "sinkName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+              "name": "Get sink",
+              "id": "37742850-55f7-45ff-926a-3dc0dbc26cda",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"destination\": \"string\",\n  \"filter\": \"string\",\n  \"description\": \"string\",\n  \"disabled\": true,\n  \"writerIdentity\": \"string\",\n  \"includeChildren\": true,\n  \"createTime\": \"1996-01-10T13:03:04.604Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b3e7a1b4-ded8-4664-9fa3-38ea4cec1808",
-          "name": "Delete sink",
-          "request": {
-            "name": "Delete sink",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":sinkName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "sinkName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0b300650-2bfe-4c3e-9554-a6a19f5f96a7",
-              "name": "Deleted",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v2/:sinkName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     ":sinkName"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "9773578d-8a5d-401e-a470-fdfe485fb54d",
                       "key": "sinkName",
+                      "value": "<string>",
                       "description": "(Required) "
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "39aba096-c52c-4bd4-827d-be99222b4270",
+                  "name": "Sink",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:sinkName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":sinkName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sinkName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T20:07:24.000Z",
+                  "updatedAt": "2026-10-21T20:07:24.000Z",
+                  "uid": "35240-39aba096-c52c-4bd4-827d-be99222b4270"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:07:24.000Z",
+              "updatedAt": "2026-10-21T20:07:24.000Z",
+              "uid": "35240-37742850-55f7-45ff-926a-3dc0dbc26cda"
+            },
+            {
+              "name": "Delete sink",
+              "id": "044acf57-cb75-47f0-91c3-c62e38a9b9a8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/:sinkName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    ":sinkName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "21342dfe-29ad-45ba-b332-74370daa7755",
+                      "key": "sinkName",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "576d74f8-3210-43d4-aa63-90635210262a",
+                  "name": "Deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:sinkName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":sinkName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sinkName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:07:24.000Z",
+                  "updatedAt": "2026-10-21T20:07:24.000Z",
+                  "uid": "35240-576d74f8-3210-43d4-aa63-90635210262a"
+                }
+              ],
+              "createdAt": "2026-10-21T20:07:24.000Z",
+              "updatedAt": "2026-10-21T20:07:24.000Z",
+              "uid": "35240-044acf57-cb75-47f0-91c3-c62e38a9b9a8"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "06b55549-1665-40be-a7df-9b1945a7d9e5",
+          "createdAt": "2026-10-21T20:07:24.000Z",
+          "updatedAt": "2026-10-21T20:07:24.000Z",
+          "uid": "35240-06b55549-1665-40be-a7df-9b1945a7d9e5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "8f0799c9-365d-462c-bf65-904211edd8bd",
+      "createdAt": "2026-10-21T20:07:24.000Z",
+      "updatedAt": "2026-10-21T20:07:24.000Z",
+      "uid": "35240-8f0799c9-365d-462c-bf65-904211edd8bd"
     }
   ],
   "auth": {
@@ -201,29 +194,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ba4817aa-6b34-44bc-8971-b900dd795ded",
-    "name": "Google Cloud Logging Bucket Google Cloud Logging API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

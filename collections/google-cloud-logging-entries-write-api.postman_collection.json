@@ -1,113 +1,121 @@
 {
+  "info": {
+    "_postman_id": "ce70e56f-0848-4c5a-99b8-897687d0eb4c",
+    "name": "Google Cloud Logging Entries:write API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:07:14.000Z",
+    "updatedAt": "2026-10-21T20:07:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ce70e56f-0848-4c5a-99b8-897687d0eb4c"
+  },
   "item": [
     {
-      "id": "b5d242ef-ee87-4304-8005-08670109b519",
-      "name": "Entries:write",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "dfdfe5f9-9628-4a44-9979-9ac1aa4ad600",
-          "name": "Write log entries",
-          "request": {
-            "name": "Write log entries",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "entries:write"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    },\n    {\n      \"logName\": \"<string>\",\n      \"resource\": \"<object>\",\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"<string>\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": \"<object>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": \"<object>\",\n      \"protoPayload\": \"<object>\"\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "entries:write",
+          "item": [
             {
-              "id": "0548fd34-d5a1-4b76-9dc3-d9d24f9dcc3e",
-              "name": "Empty success response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "entries:write"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Write log entries",
+              "id": "8fb4a99c-4be3-4103-a500-a340d71fd6ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": \"<object>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"2019-03-18T09:33:22.415Z\",\n      \"receiveTimestamp\": \"1991-05-07T12:47:13.179Z\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"string\",\n      \"resource\": {},\n      \"timestamp\": \"1967-01-08T12:08:28.200Z\",\n      \"receiveTimestamp\": \"1951-07-17T05:51:43.345Z\",\n      \"severity\": \"EMERGENCY\",\n      \"insertId\": \"string\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"textPayload\": \"string\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+                  "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": {},\n  \"labels\": {\n    \"adipisicing_9\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"<string>\",\n      \"resource\": {},\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"Excepteur_1a\": \"<string>\",\n        \"dolore_8_\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"<string>\",\n      \"resource\": {},\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"NOTICE\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"et_1ba\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/entries:write",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "entries:write"
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "32020d90-163a-4168-9ca4-a473c1b6faf9",
+                  "name": "Empty success response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logName\": \"<string>\",\n  \"resource\": {},\n  \"labels\": {\n    \"adipisicing_9\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"logName\": \"<string>\",\n      \"resource\": {},\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"WARNING\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"Excepteur_1a\": \"<string>\",\n        \"dolore_8_\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    },\n    {\n      \"logName\": \"<string>\",\n      \"resource\": {},\n      \"timestamp\": \"<dateTime>\",\n      \"receiveTimestamp\": \"<dateTime>\",\n      \"severity\": \"NOTICE\",\n      \"insertId\": \"<string>\",\n      \"httpRequest\": {},\n      \"labels\": {\n        \"et_1ba\": \"<string>\"\n      },\n      \"textPayload\": \"<string>\",\n      \"jsonPayload\": {},\n      \"protoPayload\": {}\n    }\n  ],\n  \"partialSuccess\": \"<boolean>\",\n  \"dryRun\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/entries:write",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "entries:write"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:07:14.000Z",
+                  "updatedAt": "2026-10-21T20:07:14.000Z",
+                  "uid": "35240-32020d90-163a-4168-9ca4-a473c1b6faf9"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:07:14.000Z",
+              "updatedAt": "2026-10-21T20:07:14.000Z",
+              "uid": "35240-8fb4a99c-4be3-4103-a500-a340d71fd6ed"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f296a3e5-7493-45ed-9e95-3152f1ae0d16",
+          "createdAt": "2026-10-21T20:07:14.000Z",
+          "updatedAt": "2026-10-21T20:07:14.000Z",
+          "uid": "35240-f296a3e5-7493-45ed-9e95-3152f1ae0d16"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "27ed82fa-fd6d-4bf8-a58f-200737918cd8",
+      "createdAt": "2026-10-21T20:07:14.000Z",
+      "updatedAt": "2026-10-21T20:07:14.000Z",
+      "uid": "35240-27ed82fa-fd6d-4bf8-a58f-200737918cd8"
     }
   ],
   "auth": {
@@ -115,29 +123,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8a30dcd0-d568-49ea-b44c-fef64bf20dde",
-    "name": "Google Cloud Logging Bucket Entries:write API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

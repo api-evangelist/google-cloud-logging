@@ -1,234 +1,247 @@
 {
+  "info": {
+    "_postman_id": "11024c02-dd89-4601-ae34-83cbdb94f043",
+    "name": "Google Cloud Logging Exclusions API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:07:19.000Z",
+    "updatedAt": "2026-10-21T20:07:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-11024c02-dd89-4601-ae34-83cbdb94f043"
+  },
   "item": [
     {
-      "id": "137cd041-949f-4c75-a741-fc0bcea348f9",
-      "name": "Exclusions",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "fd0c451c-8381-4feb-a403-b77efc30e8d3",
-          "name": "List exclusions",
-          "request": {
-            "name": "List exclusions",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "exclusions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{parent}",
+          "item": [
             {
-              "id": "3df365a2-a46f-4270-acc6-5b566333c8c3",
-              "name": "List of exclusions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "exclusions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "exclusions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List exclusions",
+                  "id": "281896f2-1f11-4e84-b857-4cece4c51e87",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/exclusions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "exclusions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a5888f52-5357-4659-936c-94a089e88195",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "fd4d5a73-be52-4205-83a3-1099fc5e6b8f",
+                      "name": "List of exclusions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/exclusions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "exclusions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-21T20:07:20.000Z",
+                      "updatedAt": "2026-10-21T20:07:20.000Z",
+                      "uid": "35240-fd4d5a73-be52-4205-83a3-1099fc5e6b8f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:07:20.000Z",
+                  "updatedAt": "2026-10-21T20:07:20.000Z",
+                  "uid": "35240-281896f2-1f11-4e84-b857-4cece4c51e87"
+                },
+                {
+                  "name": "Create exclusion",
+                  "id": "a61dcf30-c897-45c7-9e82-4e657391bd97",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/exclusions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "exclusions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "26f12c3c-227c-4943-9ab0-addae85455a3",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "7aa0f5fc-fe90-444e-99a7-1496a6cb5d89",
+                      "name": "Created exclusion",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/exclusions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "exclusions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-21T20:07:20.000Z",
+                      "updatedAt": "2026-10-21T20:07:20.000Z",
+                      "uid": "35240-7aa0f5fc-fe90-444e-99a7-1496a6cb5d89"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:07:20.000Z",
+                  "updatedAt": "2026-10-21T20:07:20.000Z",
+                  "uid": "35240-a61dcf30-c897-45c7-9e82-4e657391bd97"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "08e14bcb-9b04-43b4-b125-f5bf550d8efc",
+              "createdAt": "2026-10-21T20:07:19.000Z",
+              "updatedAt": "2026-10-21T20:07:19.000Z",
+              "uid": "35240-08e14bcb-9b04-43b4-b125-f5bf550d8efc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "52f86cee-c7e7-47c0-88ab-662852e6ffc5",
-          "name": "Create exclusion",
-          "request": {
-            "name": "Create exclusion",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "exclusions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "bc2d7613-15f4-4f41-a1ce-f1e44e9e95c6",
-              "name": "Created exclusion",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "exclusions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "79f9f4db-d7c6-447c-997b-3c767056dd7e",
+          "createdAt": "2026-10-21T20:07:19.000Z",
+          "updatedAt": "2026-10-21T20:07:19.000Z",
+          "uid": "35240-79f9f4db-d7c6-447c-997b-3c767056dd7e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "94aa9191-b798-4694-97ad-27af4194c634",
+      "createdAt": "2026-10-21T20:07:19.000Z",
+      "updatedAt": "2026-10-21T20:07:19.000Z",
+      "uid": "35240-94aa9191-b798-4694-97ad-27af4194c634"
     }
   ],
   "auth": {
@@ -236,29 +249,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8abe235f-3110-4426-9ca6-1dd043a0ac69",
-    "name": "Google Cloud Logging Bucket Exclusions API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

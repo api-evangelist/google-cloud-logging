@@ -1,121 +1,134 @@
 {
+  "info": {
+    "_postman_id": "214b8814-1d37-4672-95f7-58eaca3ec861",
+    "name": "Google Cloud Logging Entries:tail API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:07:07.000Z",
+    "updatedAt": "2026-10-21T20:07:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-214b8814-1d37-4672-95f7-58eaca3ec861"
+  },
   "item": [
     {
-      "id": "bad3b9ea-18aa-4d43-ac31-6a3202941859",
-      "name": "Entries:tail",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "33aca177-16a7-4da4-a58c-63e63228cb85",
-          "name": "Tail log entries",
-          "request": {
-            "name": "Tail log entries",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "entries:tail"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"bufferWindow\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "entries:tail",
+          "item": [
             {
-              "id": "fe0bcc4f-e578-4e0c-8e41-98c955774144",
-              "name": "Streaming tail response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "entries:tail"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Tail log entries",
+              "id": "a1554018-9627-473a-a779-3397c36a46d5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"bufferWindow\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/entries:tail",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "entries:tail"
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "ff2242ab-daf5-4dfc-bbb1-3f77d56ff2e9",
+                  "name": "Streaming tail response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<string>\",\n  \"bufferWindow\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/entries:tail",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "entries:tail"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T20:07:08.000Z",
+                  "updatedAt": "2026-10-21T20:07:08.000Z",
+                  "uid": "35240-ff2242ab-daf5-4dfc-bbb1-3f77d56ff2e9"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:07:08.000Z",
+              "updatedAt": "2026-10-21T20:07:08.000Z",
+              "uid": "35240-a1554018-9627-473a-a779-3397c36a46d5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1774a2ce-75eb-4199-b341-76efdf67bf98",
+          "createdAt": "2026-10-21T20:07:08.000Z",
+          "updatedAt": "2026-10-21T20:07:08.000Z",
+          "uid": "35240-1774a2ce-75eb-4199-b341-76efdf67bf98"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "839c98bd-10a1-49a8-ae83-9f4d3023a8c0",
+      "createdAt": "2026-10-21T20:07:08.000Z",
+      "updatedAt": "2026-10-21T20:07:08.000Z",
+      "uid": "35240-839c98bd-10a1-49a8-ae83-9f4d3023a8c0"
     }
   ],
   "auth": {
@@ -123,29 +136,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bcc32629-09be-41e8-9a9a-cf63fbc5287d",
-    "name": "Google Cloud Logging Bucket Entries:tail API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

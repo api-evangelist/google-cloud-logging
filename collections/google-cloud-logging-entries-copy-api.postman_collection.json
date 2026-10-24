@@ -1,121 +1,134 @@
 {
+  "info": {
+    "_postman_id": "9b7aa7e0-9054-49ff-8dfc-305006692f43",
+    "name": "Google Cloud Logging Entries:copy API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:06:53.000Z",
+    "updatedAt": "2026-10-21T20:06:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9b7aa7e0-9054-49ff-8dfc-305006692f43"
+  },
   "item": [
     {
-      "id": "f32a572d-565e-473c-98fd-eb6a3cd06371",
-      "name": "Entries:copy",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "3eec056e-7ba3-48f8-a209-5ead13b3883a",
-          "name": "Copy log entries",
-          "request": {
-            "name": "Copy log entries",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "entries:copy"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "entries:copy",
+          "item": [
             {
-              "id": "d75ed1fd-5f6f-4e4d-9335-6f39f189cd10",
-              "name": "Long-running operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "entries:copy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Copy log entries",
+              "id": "561bf9cb-164f-4503-85bc-5a8f564f23b6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "<object>",
+                  "raw": "{}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/entries:copy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "entries:copy"
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "e54be529-77e8-4c0d-a5d3-18ec0204a9b7",
+                  "name": "Long-running operation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/entries:copy",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "entries:copy"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T20:06:53.000Z",
+                  "updatedAt": "2026-10-21T20:06:53.000Z",
+                  "uid": "35240-e54be529-77e8-4c0d-a5d3-18ec0204a9b7"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:06:53.000Z",
+              "updatedAt": "2026-10-21T20:06:53.000Z",
+              "uid": "35240-561bf9cb-164f-4503-85bc-5a8f564f23b6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c671d296-6fa5-46c0-ba8b-bcf6b0b6bfce",
+          "createdAt": "2026-10-21T20:06:53.000Z",
+          "updatedAt": "2026-10-21T20:06:53.000Z",
+          "uid": "35240-c671d296-6fa5-46c0-ba8b-bcf6b0b6bfce"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "11203241-0577-48eb-ac01-0ae414503e42",
+      "createdAt": "2026-10-21T20:06:53.000Z",
+      "updatedAt": "2026-10-21T20:06:53.000Z",
+      "uid": "35240-11203241-0577-48eb-ac01-0ae414503e42"
     }
   ],
   "auth": {
@@ -123,29 +136,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3a6cf0be-8e76-42bf-8fc3-52a7acfd38fc",
-    "name": "Google Cloud Logging Bucket Entries:copy API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

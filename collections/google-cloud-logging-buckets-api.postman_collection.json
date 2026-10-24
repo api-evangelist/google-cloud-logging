@@ -1,266 +1,281 @@
 {
+  "info": {
+    "_postman_id": "13afae5d-b2ee-4ddb-a670-3c6cd37e322e",
+    "name": "Google Cloud Logging Buckets API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:06:45.000Z",
+    "updatedAt": "2026-10-21T20:06:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-13afae5d-b2ee-4ddb-a670-3c6cd37e322e"
+  },
   "item": [
     {
-      "id": "b0fbb90d-15db-4f87-b3c5-f58332324a89",
-      "name": "Buckets",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "98ff71bf-e3d5-4ac0-8296-75454ea4042b",
-          "name": "List buckets",
-          "request": {
-            "name": "List buckets",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "buckets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "pageToken",
-                  "value": "<string>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{parent}",
+          "item": [
             {
-              "id": "4f77400b-4d05-4760-b352-21ffec740eb3",
-              "name": "List of buckets",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "buckets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageSize",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "pageToken",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "buckets",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List buckets",
+                  "id": "b17bce1d-9b3f-4c1d-b23d-59197afab161",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/buckets?pageSize=<integer>&pageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "buckets"
+                      ],
+                      "query": [
+                        {
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "pageToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e0321cef-323e-46d2-8b29-3f8d54d16a54",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6b878042-cca1-4d05-a759-9dace8a828b1",
+                      "name": "List of buckets",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/buckets?pageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "buckets"
+                          ],
+                          "query": [
+                            {
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"buckets\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"retentionDays\": \"<integer>\",\n      \"locked\": \"<boolean>\",\n      \"lifecycleState\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"retentionDays\": \"<integer>\",\n      \"locked\": \"<boolean>\",\n      \"lifecycleState\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:06:45.000Z",
+                      "updatedAt": "2026-10-21T20:06:45.000Z",
+                      "uid": "35240-6b878042-cca1-4d05-a759-9dace8a828b1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:06:45.000Z",
+                  "updatedAt": "2026-10-21T20:06:45.000Z",
+                  "uid": "35240-b17bce1d-9b3f-4c1d-b23d-59197afab161"
+                },
+                {
+                  "name": "Create bucket",
+                  "id": "8abfa4af-3b96-4324-b637-c564cac8e055",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/buckets?bucketId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "buckets"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "bucketId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f5712722-4188-429c-b24b-3434278b7e7b",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4aa2d4cf-cdc4-427c-afca-0b6b4c68f2d8",
+                      "name": "Created bucket",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/buckets?bucketId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "buckets"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "bucketId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:06:45.000Z",
+                      "updatedAt": "2026-10-21T20:06:45.000Z",
+                      "uid": "35240-4aa2d4cf-cdc4-427c-afca-0b6b4c68f2d8"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:06:45.000Z",
+                  "updatedAt": "2026-10-21T20:06:45.000Z",
+                  "uid": "35240-8abfa4af-3b96-4324-b637-c564cac8e055"
                 }
               ],
-              "body": "{\n  \"buckets\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createTime\": \"1970-01-23T01:45:07.757Z\",\n      \"updateTime\": \"1975-08-07T08:13:06.338Z\",\n      \"retentionDays\": 576,\n      \"locked\": true,\n      \"lifecycleState\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createTime\": \"1968-08-23T07:36:37.852Z\",\n      \"updateTime\": \"2001-04-08T13:14:42.755Z\",\n      \"retentionDays\": 6818,\n      \"locked\": true,\n      \"lifecycleState\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "86e7355f-f674-4992-8854-e323b78ca59c",
+              "createdAt": "2026-10-21T20:06:45.000Z",
+              "updatedAt": "2026-10-21T20:06:45.000Z",
+              "uid": "35240-86e7355f-f674-4992-8854-e323b78ca59c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ff9aabf5-7733-4611-acb4-493410102e49",
-          "name": "Create bucket",
-          "request": {
-            "name": "Create bucket",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "buckets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "bucketId",
-                  "value": "<string>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "0e5902a9-10eb-4675-8164-a492a9aad0e5",
-              "name": "Created bucket",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "buckets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "bucketId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"retentionDays\": \"<integer>\",\n  \"locked\": \"<boolean>\",\n  \"lifecycleState\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"createTime\": \"2022-08-07T00:07:48.554Z\",\n  \"updateTime\": \"1994-02-05T15:58:51.545Z\",\n  \"retentionDays\": 5375,\n  \"locked\": false,\n  \"lifecycleState\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1aa2cd72-1895-45ef-9956-b4195e5549e0",
+          "createdAt": "2026-10-21T20:06:45.000Z",
+          "updatedAt": "2026-10-21T20:06:45.000Z",
+          "uid": "35240-1aa2cd72-1895-45ef-9956-b4195e5549e0"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "75e7c951-b6d1-49f7-9d47-2a8fdb4aa2ef",
+      "createdAt": "2026-10-21T20:06:45.000Z",
+      "updatedAt": "2026-10-21T20:06:45.000Z",
+      "uid": "35240-75e7c951-b6d1-49f7-9d47-2a8fdb4aa2ef"
     }
   ],
   "auth": {
@@ -268,29 +283,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f228227d-c8f0-4f2c-b669-aeea98f3d2e5",
-    "name": "Google Cloud Logging Bucket Buckets API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }

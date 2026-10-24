@@ -1,245 +1,259 @@
 {
+  "info": {
+    "_postman_id": "0ed43e9e-e484-44e2-874c-558270a3a539",
+    "name": "Google Cloud Logging Sinks API",
+    "description": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:07:34.000Z",
+    "updatedAt": "2026-10-21T20:07:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0ed43e9e-e484-44e2-874c-558270a3a539"
+  },
   "item": [
     {
-      "id": "f7234e6c-a260-490d-b45a-bc3ff599607e",
-      "name": "Sinks",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "e439c1ef-7543-46bc-ad23-3f5e5f8c9394",
-          "name": "List sinks",
-          "request": {
-            "name": "List sinks",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "sinks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{parent}",
+          "item": [
             {
-              "id": "21349938-51fa-44a9-94ae-2828141f4f17",
-              "name": "List of sinks",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "sinks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "sinks",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List sinks",
+                  "id": "d472c398-36ea-4876-84b6-5645922ed8b1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/sinks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "sinks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d44718f8-e3ea-4e3a-856a-557df95ea58a",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "928d3583-dee6-42f9-bc56-f796e908b549",
+                      "name": "List of sinks",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/sinks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "sinks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sinks\": [\n    {\n      \"name\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"description\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"writerIdentity\": \"<string>\",\n      \"includeChildren\": \"<boolean>\",\n      \"createTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"description\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"writerIdentity\": \"<string>\",\n      \"includeChildren\": \"<boolean>\",\n      \"createTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:07:35.000Z",
+                      "updatedAt": "2026-10-21T20:07:35.000Z",
+                      "uid": "35240-928d3583-dee6-42f9-bc56-f796e908b549"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:07:35.000Z",
+                  "updatedAt": "2026-10-21T20:07:35.000Z",
+                  "uid": "35240-d472c398-36ea-4876-84b6-5645922ed8b1"
+                },
+                {
+                  "name": "Create sink",
+                  "id": "6e26922a-7c7f-4ffc-aef4-932691ae1e1d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/:parent/sinks?uniqueWriterIdentity=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        ":parent",
+                        "sinks"
+                      ],
+                      "query": [
+                        {
+                          "key": "uniqueWriterIdentity",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2f0f0823-eff2-4a34-b4bc-1afc3194207a",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3c455b30-8fa1-4c97-898a-0089be4e669c",
+                      "name": "Created sink",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/:parent/sinks?uniqueWriterIdentity=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            ":parent",
+                            "sinks"
+                          ],
+                          "query": [
+                            {
+                              "key": "uniqueWriterIdentity",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T20:07:35.000Z",
+                      "updatedAt": "2026-10-21T20:07:35.000Z",
+                      "uid": "35240-3c455b30-8fa1-4c97-898a-0089be4e669c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:07:35.000Z",
+                  "updatedAt": "2026-10-21T20:07:35.000Z",
+                  "uid": "35240-6e26922a-7c7f-4ffc-aef4-932691ae1e1d"
                 }
               ],
-              "body": "{\n  \"sinks\": [\n    {\n      \"name\": \"string\",\n      \"destination\": \"string\",\n      \"filter\": \"string\",\n      \"description\": \"string\",\n      \"disabled\": false,\n      \"writerIdentity\": \"string\",\n      \"includeChildren\": true,\n      \"createTime\": \"1978-04-17T11:28:14.009Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"destination\": \"string\",\n      \"filter\": \"string\",\n      \"description\": \"string\",\n      \"disabled\": true,\n      \"writerIdentity\": \"string\",\n      \"includeChildren\": false,\n      \"createTime\": \"1963-05-17T09:03:30.174Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "a6f2174c-fa76-4f15-b0ab-9ccdeb6de032",
+              "createdAt": "2026-10-21T20:07:35.000Z",
+              "updatedAt": "2026-10-21T20:07:35.000Z",
+              "uid": "35240-a6f2174c-fa76-4f15-b0ab-9ccdeb6de032"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "345bb763-5398-4b10-9c89-b3a056b2b5cb",
-          "name": "Create sink",
-          "request": {
-            "name": "Create sink",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                ":parent",
-                "sinks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "uniqueWriterIdentity",
-                  "value": "<boolean>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "parent",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "73c6c9fc-2494-4b6b-a568-fea4a89646f4",
-              "name": "Created sink",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    ":parent",
-                    "sinks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "uniqueWriterIdentity",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "parent",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"description\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"writerIdentity\": \"<string>\",\n  \"includeChildren\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"destination\": \"string\",\n  \"filter\": \"string\",\n  \"description\": \"string\",\n  \"disabled\": true,\n  \"writerIdentity\": \"string\",\n  \"includeChildren\": false,\n  \"createTime\": \"1991-02-02T10:54:21.533Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "aef65e6a-ff0c-4e91-8adc-774c4a170ada",
+          "createdAt": "2026-10-21T20:07:35.000Z",
+          "updatedAt": "2026-10-21T20:07:35.000Z",
+          "uid": "35240-aef65e6a-ff0c-4e91-8adc-774c4a170ada"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://logging.googleapis.com",
-      "key": "baseUrl"
+      "id": "b91c3662-0795-4d29-9528-7b24ebc64c11",
+      "createdAt": "2026-10-21T20:07:35.000Z",
+      "updatedAt": "2026-10-21T20:07:35.000Z",
+      "uid": "35240-b91c3662-0795-4d29-9528-7b24ebc64c11"
     }
   ],
   "auth": {
@@ -247,29 +261,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "logging.write logging.read logging.admin cloud-platform"
+        "value": "logging.write logging.read logging.admin cloud-platform",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://oauth2.googleapis.com/token"
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b769acf4-cf5b-4519-b501-27d25cf234b3",
-    "name": "Google Cloud Logging Bucket Sinks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Google Cloud Logging API v2 writes log entries and manages Cloud Logging\nconfiguration including buckets, sinks, exclusions, log-based metrics,\nmonitored resource descriptors, and CMEK settings.\n",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://logging.googleapis.com"
     }
-  }
+  ]
 }
