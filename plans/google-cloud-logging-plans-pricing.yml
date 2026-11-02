@@ -1,0 +1,286 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://cloud.google.com/products/observability/pricing
+sources:
+- https://cloud.google.com/products/observability/pricing
+- https://cloud.google.com/stackdriver/pricing
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Google Cloud Observability (Logging, Monitoring, Trace) usage-based pricing page with free monthly
+  allotments; Error Reporting and Profiler stated as no cost.
+plan_count: 18
+currency: USD
+plans:
+- name: Logging storage (except vended network logs)
+  price_text: $0.50/GiB
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: GiB
+  included_quota: First 50 GiB/project/month
+- name: Vended network logs storage
+  price_text: $0.25/GiB
+  price: 0.25
+  currency: USD
+  period: per-use
+  unit: GiB
+  included_quota: Not applicable
+- name: Logging retention
+  price_text: $0.01 per GiB per month for logs retained more than 30 days
+  price: 0.01
+  currency: USD
+  period: month
+  unit: GiB
+  included_quota: Logs retained for the default retention period don't incur a retention cost.
+- name: Log Router
+  price_text: No additional charge
+  period: none
+- name: Log Analytics
+  price_text: No additional charge
+  period: none
+- name: Monitoring data (bytes ingested) tier 1
+  price_text: $0.2580/MiB
+  price: 0.258
+  currency: USD
+  period: per-use
+  unit: MiB
+  included_quota: First 150 MiB per billing account for metrics charged by bytes ingested
+- name: Monitoring data tier 2
+  price_text: '$0.1510/MiB: next 100,000–250,000 MiB'
+  price: 0.151
+  currency: USD
+  period: per-use
+  unit: MiB
+- name: Monitoring data tier 3
+  price_text: '$0.0610/MiB: >250,000 MiB'
+  price: 0.061
+  currency: USD
+  period: per-use
+  unit: MiB
+- name: Managed Service for Prometheus samples tier 1
+  price_text: $0.06/million samples
+  price: 0.06
+  currency: USD
+  period: per-use
+  unit: million samples
+  included_quota: Not applicable
+- name: Prometheus samples tier 2
+  price_text: '$0.048/million samples: next 50-250 billion samples ingested'
+  price: 0.048
+  currency: USD
+  period: per-use
+  unit: million samples
+- name: Prometheus samples tier 3
+  price_text: '$0.036/million samples: next 250-500 billion samples ingested'
+  price: 0.036
+  currency: USD
+  period: per-use
+  unit: million samples
+- name: Prometheus samples tier 4
+  price_text: '$0.024/million samples: >500 billion samples ingested'
+  price: 0.024
+  currency: USD
+  period: per-use
+  unit: million samples
+- name: Monitoring read API calls
+  price_text: 'Read API calls: $0.50/million time series returned'
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: million time series returned
+  included_quota: First 1 million time series returned per billing account
+- name: Uptime check executions
+  price_text: $0.30/1,000 executions
+  price: 0.3
+  currency: USD
+  period: per-use
+  unit: 1,000 executions
+  included_quota: 1 million executions per Google Cloud project
+- name: Synthetic Monitors executions
+  price_text: $1.20/1,000 executions
+  price: 1.2
+  currency: USD
+  period: per-use
+  unit: 1,000 executions
+  included_quota: 100 executions per billing account
+- name: Alerting policies - metric reference
+  price_text: $0.35 per month for each metric reference in an alerting policy
+  price: 0.35
+  currency: USD
+  period: month
+  unit: metric reference
+  included_quota: Not applicable
+- name: Alerting policies - points returned
+  price_text: $0.50 per 1,000,000 points returned by the query of a metric alerting policy condition
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: 1,000,000 points
+- name: Cloud Trace ingestion
+  price_text: $0.20/million spans
+  price: 0.2
+  currency: USD
+  period: per-use
+  unit: million spans
+  included_quota: First 2.5 million spans per billing account
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - data
+  plans:
+  - name: Logging storage (except vended network logs)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Vended network logs storage
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Logging retention
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Log Router
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Log Analytics
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Monitoring data (bytes ingested) tier 1
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Monitoring data tier 2
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Monitoring data tier 3
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Managed Service for Prometheus samples tier 1
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Prometheus samples tier 2
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Prometheus samples tier 3
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Prometheus samples tier 4
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Monitoring read API calls
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Uptime check executions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Synthetic Monitors executions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Alerting policies - metric reference
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Alerting policies - points returned
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Cloud Trace ingestion
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
