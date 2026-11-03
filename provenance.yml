@@ -119,7 +119,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-10-31T095417.yml:
+  kin/checks-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -174,6 +174,15 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-10-31T095417.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T171331.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T200237.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/google-cloud-logging-lifecycle.yml:
@@ -279,6 +288,9 @@ artifacts:
   packages/google-cloud-logging-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/google-cloud-logging-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/google-cloud-logging-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -287,6 +299,9 @@ artifacts:
     evidence: no authorship recorded
   rate-limits/google-cloud-logging-rate-limits.yml:
     method: searched
+    evidence: declared in the artifact
+  rules/google-cloud-logging-rules.yml:
+    method: generated
     evidence: declared in the artifact
   sandbox/google-cloud-logging-sandbox.yml:
     method: searched
@@ -313,6 +328,9 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   skills/google-cloud-logging-write-and-query-logs.md:
+    method: generated
+    evidence: declared in the artifact
+  sla/google-cloud-logging-sla.yml:
     method: generated
     evidence: declared in the artifact
   well-known/google-cloud-logging-oauth-authorization-server.json:
