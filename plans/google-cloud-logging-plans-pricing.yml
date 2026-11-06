@@ -2,6 +2,7 @@
 generated: '2026-10-28'
 method: searched
 source: https://cloud.google.com/products/observability/pricing
+name: Google Cloud Logging API Plans
 sources:
 - https://cloud.google.com/products/observability/pricing
 - https://cloud.google.com/stackdriver/pricing
@@ -134,7 +135,7 @@ plans:
   unit: million spans
   included_quota: First 2.5 million spans per billing account
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
